@@ -1,9 +1,24 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-05-29T04:28:36+00:00",
+  "generated_at": "2026-05-29T19:44:48+00:00",
   "runs": [
     {
-      "id": "1ce038bc-0773-45e0-8841-0b6038611740",
+      "id": "f7eb3264-2571-4de6-a7d2-82f4f1437f97",
+      "domain": "Wordle",
+      "model": "openai/gpt-4o",
+      "status": "completed",
+      "scores": {
+        "win_rate": 1.0,
+        "average_reward": 1.0
+      },
+      "episodes": 4,
+      "created_at": "2026-05-29T19:42:12.848219",
+      "completed_at": "2026-05-29T19:42:21.980795",
+      "exported_at": "2026-05-29T19:42:27.280954+00:00",
+      "file": "runs/f7eb3264-2571-4de6-a7d2-82f4f1437f97.json"
+    },
+    {
+      "id": "6096cee9-6e11-49e4-a543-9d8fe7f8a3a7",
       "domain": "Wordle",
       "model": "gemini/gemini-3.1-flash-lite",
       "status": "completed",
@@ -11,11 +26,26 @@
         "win_rate": 1.0,
         "average_reward": 1.0
       },
-      "episodes": 1,
-      "created_at": "2026-05-29T03:04:21.608109",
-      "completed_at": "2026-05-29T03:04:56.564263",
-      "exported_at": "2026-05-29T04:01:32.742740+00:00",
-      "file": "runs/1ce038bc-0773-45e0-8841-0b6038611740.json"
+      "episodes": 6,
+      "created_at": "2026-05-29T19:33:13.487023",
+      "completed_at": "2026-05-29T19:33:30.216332",
+      "exported_at": "2026-05-29T19:38:00.372075+00:00",
+      "file": "runs/6096cee9-6e11-49e4-a543-9d8fe7f8a3a7.json"
+    },
+    {
+      "id": "5cdaff71-a79c-4c54-aff5-30054c1a89b3",
+      "domain": "Wordle",
+      "model": "gemini/gemini-3.1-flash-lite",
+      "status": "completed",
+      "scores": {
+        "win_rate": 1.0,
+        "average_reward": 1.0
+      },
+      "episodes": 3,
+      "created_at": "2026-05-29T19:20:32.583980",
+      "completed_at": "2026-05-29T19:20:43.384453",
+      "exported_at": "2026-05-29T19:37:59.745736+00:00",
+      "file": "runs/5cdaff71-a79c-4c54-aff5-30054c1a89b3.json"
     }
   ]
 }

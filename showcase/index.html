@@ -376,7 +376,10 @@
       <section class="panel runs-panel">
         <div class="title-row">
           <h2>Runs</h2>
-          <button id="refresh-runs" class="secondary" title="Reload runs.json">Refresh</button>
+          <div class="toolbar">
+            <button id="fetch-recent" title="Fetch recent runs from the API">Fetch recent</button>
+            <button id="refresh-runs" class="secondary" title="Reload local runs.json">Refresh</button>
+          </div>
         </div>
         <div class="runs-list" id="runs-list">
           <p class="runs-empty">Loading run index...</p>
@@ -424,6 +427,8 @@
     const API_BASE = "https://api.swecc.org/bench";
     const RUNS_INDEX_PATH = "data/runs.json";
     const SAMPLE_PATH = "data/replay.json";
+    const DEFAULT_DOMAIN_ID = "85ec56ce-8e26-40d9-bfbb-879097f8d958"; // Wordle (FWT-bs/wordle-env prod domain)
+    const RECENT_LIMIT = 20;
 
     const state = {
       data: null,
@@ -451,7 +456,60 @@
       file: document.querySelector("#file"),
       runsList: document.querySelector("#runs-list"),
       refreshRuns: document.querySelector("#refresh-runs"),
+      fetchRecent: document.querySelector("#fetch-recent"),
     };
+
+    function getDomainIdFromUrl() {
+      return new URLSearchParams(window.location.search).get("domain") || DEFAULT_DOMAIN_ID;
+    }
+
+    function normalizeApiRun(run) {
+      return {
+        id: run.id,
+        domain: run.config?.domain_id === DEFAULT_DOMAIN_ID ? "Wordle" : run.config?.domain_id,
+        model: run.config?.agent_config?.model,
+        status: run.status,
+        scores: run.scores || {},
+        episodes: run.config?.num_episodes,
+        created_at: run.created_at,
+        completed_at: run.completed_at,
+        source: "api",
+      };
+    }
+
+    async function fetchRecentRuns() {
+      const domainId = getDomainIdFromUrl();
+      setMessage(`Fetching recent runs for domain ${shortId(domainId)}...`);
+      const url = `${API_BASE}/v1/runs?domain_id=${encodeURIComponent(domainId)}`;
+      const response = await fetch(url, { credentials: "omit" });
+      if (!response.ok) {
+        throw new Error(`API returned ${response.status} ${response.statusText}`);
+      }
+      const runs = await response.json();
+      if (!Array.isArray(runs)) {
+        throw new Error("Unexpected response shape from /v1/runs.");
+      }
+      const normalized = runs
+        .map(normalizeApiRun)
+        .filter((r) => r.id)
+        .sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""))
+        .slice(0, RECENT_LIMIT);
+      state.index = mergeIndex(state.index, normalized);
+      renderRunsList();
+      setMessage(`Loaded ${normalized.length} recent run(s) from the API.`);
+    }
+
+    function mergeIndex(existing, fetched) {
+      const byId = new Map();
+      for (const entry of existing) byId.set(entry.id, entry);
+      for (const entry of fetched) {
+        const prev = byId.get(entry.id) || {};
+        byId.set(entry.id, { ...entry, ...prev, ...entry, file: prev.file });
+      }
+      return Array.from(byId.values()).sort(
+        (a, b) => (b.created_at || "").localeCompare(a.created_at || "")
+      );
+    }
 
     function getRunIdFromUrl() {
       const params = new URLSearchParams(window.location.search);
@@ -737,6 +795,14 @@
       setMessage("Refreshing run index...");
       await loadIndex();
       setMessage(state.index.length ? `Index has ${state.index.length} run(s).` : "Index is empty.");
+    });
+
+    els.fetchRecent.addEventListener("click", async () => {
+      try {
+        await fetchRecentRuns();
+      } catch (error) {
+        setMessage(`Fetch recent failed: ${error.message}`);
+      }
     });
 
     els.file.addEventListener("change", async () => {
