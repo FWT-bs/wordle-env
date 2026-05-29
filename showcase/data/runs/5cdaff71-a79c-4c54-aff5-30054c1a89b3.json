@@ -1,1 +1,2913 @@
-{"schema_version":"1","exported_at":"2026-05-29T19:37:59.745736+00:00","visibility":"private","domain_id":"85ec56ce-8e26-40d9-bfbb-879097f8d958","domain_name":"Wordle","binding_vow_version":"1.0.0","run":{"id":"5cdaff71-a79c-4c54-aff5-30054c1a89b3","config":{"domain_id":"85ec56ce-8e26-40d9-bfbb-879097f8d958","binding_vow_version":"1.0.0","agent_config":{"model":"gemini/gemini-3.1-flash-lite","system_prompt":null,"techniques":[],"temperature":0.0,"max_tokens":512},"seed_set":null,"num_episodes":3,"max_parallel":2,"env_id":"3fbec49c-776d-41db-945a-9ab193ac70e2"},"requester_id":"363","status":"completed","created_at":"2026-05-29T19:20:32.583980","completed_at":"2026-05-29T19:20:43.384453","scores":{"win_rate":1.0,"average_reward":1.0},"team_id":null,"env_id":"3fbec49c-776d-41db-945a-9ab193ac70e2"},"episodes":[{"id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","run_id":"5cdaff71-a79c-4c54-aff5-30054c1a89b3","seed":2,"status":"completed","started_at":"2026-05-29T19:20:33.093904","ended_at":"2026-05-29T19:20:35.605971","steps":2,"total_reward":1.0,"terminal_info":{"won":"1.0","guess":"brave","valid":"1.0","answer":"brave","guesses_used":"2","total_tokens":505}},{"id":"e431802a-f9be-4df0-9175-314bc4b5c06e","run_id":"5cdaff71-a79c-4c54-aff5-30054c1a89b3","seed":1,"status":"completed","started_at":"2026-05-29T19:20:33.093841","ended_at":"2026-05-29T19:20:38.936243","steps":2,"total_reward":1.0,"terminal_info":{"won":"1.0","guess":"flame","valid":"1.0","answer":"flame","guesses_used":"2","total_tokens":516}},{"id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","run_id":"5cdaff71-a79c-4c54-aff5-30054c1a89b3","seed":0,"status":"completed","started_at":"2026-05-29T19:20:33.093737","ended_at":"2026-05-29T19:20:43.238485","steps":3,"total_reward":1.0,"terminal_info":{"won":"1.0","guess":"table","valid":"1.0","answer":"table","guesses_used":"3","total_tokens":892}}],"traces":{"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0":[{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":0,"timestamp":"2026-05-29T19:20:33.686130","event_type":"episode_start","payload":{"seed":2}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":0,"timestamp":"2026-05-29T19:20:33.787771","event_type":"observation","payload":{"phase":"start","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":1,"timestamp":"2026-05-29T19:20:33.790176","event_type":"observation","payload":{"phase":"before_agent","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":1,"timestamp":"2026-05-29T19:20:34.886608","event_type":"action","payload":{"action":{"guess":"crane"}}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":1,"timestamp":"2026-05-29T19:20:34.415045","event_type":"technique_event","payload":{"kind":"token_usage","step_tokens":215,"prompt_tokens":205,"completion_tokens":10,"cumulative_tokens":215}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":1,"timestamp":"2026-05-29T19:20:34.902619","event_type":"step_result","payload":{"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"1","guess":"crane","valid":"1.0","answer":""},"system_prompt":null}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":1,"timestamp":"2026-05-29T19:20:34.903943","event_type":"observation","payload":{"phase":"after_env","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":2,"timestamp":"2026-05-29T19:20:34.904601","event_type":"observation","payload":{"phase":"before_agent","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":2,"timestamp":"2026-05-29T19:20:35.576293","event_type":"action","payload":{"action":{"guess":"brave"}}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":2,"timestamp":"2026-05-29T19:20:35.574445","event_type":"technique_event","payload":{"kind":"token_usage","step_tokens":290,"prompt_tokens":280,"completion_tokens":10,"cumulative_tokens":505}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":2,"timestamp":"2026-05-29T19:20:35.590465","event_type":"step_result","payload":{"reward":1.0,"terminated":true,"truncated":false,"info":{"won":"1.0","guesses_used":"2","guess":"brave","valid":"1.0","answer":"brave"},"system_prompt":null}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":2,"timestamp":"2026-05-29T19:20:35.590950","event_type":"observation","payload":{"phase":"after_env","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"brave","valid":true,"feedback":[{"letter":"b","mark":"green"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"v","mark":"green"},{"letter":"e","mark":"green"}]}],"answer":"brave"},"content_type":"application/json","system_prompt":null}},{"episode_id":"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0","step":2,"timestamp":"2026-05-29T19:20:35.605480","event_type":"episode_end","payload":{"total_reward":1.0,"steps":2,"status":"completed","terminal_info":{"won":"1.0","guesses_used":"2","guess":"brave","valid":"1.0","answer":"brave","total_tokens":505},"total_tokens":505}}],"e431802a-f9be-4df0-9175-314bc4b5c06e":[{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":0,"timestamp":"2026-05-29T19:20:33.642095","event_type":"episode_start","payload":{"seed":1}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":0,"timestamp":"2026-05-29T19:20:33.788699","event_type":"observation","payload":{"phase":"start","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":1,"timestamp":"2026-05-29T19:20:33.789598","event_type":"observation","payload":{"phase":"before_agent","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":1,"timestamp":"2026-05-29T19:20:37.700360","event_type":"action","payload":{"action":{"guess":"crane"}}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":1,"timestamp":"2026-05-29T19:20:37.697053","event_type":"technique_event","payload":{"kind":"token_usage","step_tokens":215,"prompt_tokens":205,"completion_tokens":10,"cumulative_tokens":215}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":1,"timestamp":"2026-05-29T19:20:37.716536","event_type":"step_result","payload":{"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"1","guess":"crane","valid":"1.0","answer":""},"system_prompt":null}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":1,"timestamp":"2026-05-29T19:20:37.717919","event_type":"observation","payload":{"phase":"after_env","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":2,"timestamp":"2026-05-29T19:20:37.719431","event_type":"observation","payload":{"phase":"before_agent","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":2,"timestamp":"2026-05-29T19:20:38.896383","event_type":"action","payload":{"action":{"guess":"flame"}}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":2,"timestamp":"2026-05-29T19:20:38.893849","event_type":"technique_event","payload":{"kind":"token_usage","step_tokens":301,"prompt_tokens":280,"completion_tokens":21,"cumulative_tokens":516}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":2,"timestamp":"2026-05-29T19:20:38.921170","event_type":"step_result","payload":{"reward":1.0,"terminated":true,"truncated":false,"info":{"won":"1.0","guesses_used":"2","guess":"flame","valid":"1.0","answer":"flame"},"system_prompt":null}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":2,"timestamp":"2026-05-29T19:20:38.921657","event_type":"observation","payload":{"phase":"after_env","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"green"},{"letter":"l","mark":"green"},{"letter":"a","mark":"green"},{"letter":"m","mark":"green"},{"letter":"e","mark":"green"}]}],"answer":"flame"},"content_type":"application/json","system_prompt":null}},{"episode_id":"e431802a-f9be-4df0-9175-314bc4b5c06e","step":2,"timestamp":"2026-05-29T19:20:38.935736","event_type":"episode_end","payload":{"total_reward":1.0,"steps":2,"status":"completed","terminal_info":{"won":"1.0","guesses_used":"2","guess":"flame","valid":"1.0","answer":"flame","total_tokens":516},"total_tokens":516}}],"69ba2e19-12ac-4002-add0-edfb7d3a2aa1":[{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":0,"timestamp":"2026-05-29T19:20:33.582092","event_type":"episode_start","payload":{"seed":0}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":0,"timestamp":"2026-05-29T19:20:33.642375","event_type":"observation","payload":{"phase":"start","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"content_type":"application/json","system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":1,"timestamp":"2026-05-29T19:20:33.687489","event_type":"observation","payload":{"phase":"before_agent","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"content_type":"application/json","system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":1,"timestamp":"2026-05-29T19:20:37.940320","event_type":"action","payload":{"action":{"guess":"crane"}}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":1,"timestamp":"2026-05-29T19:20:37.938019","event_type":"technique_event","payload":{"kind":"token_usage","step_tokens":215,"prompt_tokens":205,"completion_tokens":10,"cumulative_tokens":215}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":1,"timestamp":"2026-05-29T19:20:37.958180","event_type":"step_result","payload":{"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"1","guess":"crane","valid":"1.0","answer":""},"system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":1,"timestamp":"2026-05-29T19:20:37.958626","event_type":"observation","payload":{"phase":"after_env","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":2,"timestamp":"2026-05-29T19:20:37.959045","event_type":"observation","payload":{"phase":"before_agent","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":2,"timestamp":"2026-05-29T19:20:42.395264","event_type":"action","payload":{"action":{"guess":"flame"}}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":2,"timestamp":"2026-05-29T19:20:42.393202","event_type":"technique_event","payload":{"kind":"token_usage","step_tokens":301,"prompt_tokens":280,"completion_tokens":21,"cumulative_tokens":516}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":2,"timestamp":"2026-05-29T19:20:42.409550","event_type":"step_result","payload":{"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"2","guess":"flame","valid":"1.0","answer":""},"system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":2,"timestamp":"2026-05-29T19:20:42.410056","event_type":"observation","payload":{"phase":"after_env","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"gray"},{"letter":"l","mark":"yellow"},{"letter":"a","mark":"yellow"},{"letter":"m","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":3,"timestamp":"2026-05-29T19:20:42.410465","event_type":"observation","payload":{"phase":"before_agent","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"gray"},{"letter":"l","mark":"yellow"},{"letter":"a","mark":"yellow"},{"letter":"m","mark":"gray"},{"letter":"e","mark":"green"}]}]},"content_type":"application/json","system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":3,"timestamp":"2026-05-29T19:20:43.204726","event_type":"action","payload":{"action":{"guess":"table"}}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":3,"timestamp":"2026-05-29T19:20:43.202457","event_type":"technique_event","payload":{"kind":"token_usage","step_tokens":376,"prompt_tokens":356,"completion_tokens":20,"cumulative_tokens":892}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":3,"timestamp":"2026-05-29T19:20:43.222255","event_type":"step_result","payload":{"reward":1.0,"terminated":true,"truncated":false,"info":{"won":"1.0","guesses_used":"3","guess":"table","valid":"1.0","answer":"table"},"system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":3,"timestamp":"2026-05-29T19:20:43.222759","event_type":"observation","payload":{"phase":"after_env","data":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":3,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"gray"},{"letter":"l","mark":"yellow"},{"letter":"a","mark":"yellow"},{"letter":"m","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"table","valid":true,"feedback":[{"letter":"t","mark":"green"},{"letter":"a","mark":"green"},{"letter":"b","mark":"green"},{"letter":"l","mark":"green"},{"letter":"e","mark":"green"}]}],"answer":"table"},"content_type":"application/json","system_prompt":null}},{"episode_id":"69ba2e19-12ac-4002-add0-edfb7d3a2aa1","step":3,"timestamp":"2026-05-29T19:20:43.237760","event_type":"episode_end","payload":{"total_reward":1.0,"steps":3,"status":"completed","terminal_info":{"won":"1.0","guesses_used":"3","guess":"table","valid":"1.0","answer":"table","total_tokens":892},"total_tokens":892}}]},"replay":{"e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0":[{"step":1,"timestamp":"2026-05-29T19:20:33.790176","board_before":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"observation":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"action":{"guess":"crane"},"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"1","guess":"crane","valid":"1.0","answer":""},"board_after":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]}},{"step":2,"timestamp":"2026-05-29T19:20:34.904601","board_before":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"observation":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"action":{"guess":"brave"},"reward":1.0,"terminated":true,"truncated":false,"info":{"won":"1.0","guesses_used":"2","guess":"brave","valid":"1.0","answer":"brave"},"board_after":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"brave","valid":true,"feedback":[{"letter":"b","mark":"green"},{"letter":"r","mark":"green"},{"letter":"a","mark":"green"},{"letter":"v","mark":"green"},{"letter":"e","mark":"green"}]}],"answer":"brave"},"episode_end":{"total_reward":1.0,"steps":2,"status":"completed","terminal_info":{"won":"1.0","guesses_used":"2","guess":"brave","valid":"1.0","answer":"brave","total_tokens":505}}}],"e431802a-f9be-4df0-9175-314bc4b5c06e":[{"step":1,"timestamp":"2026-05-29T19:20:33.789598","board_before":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"observation":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"action":{"guess":"crane"},"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"1","guess":"crane","valid":"1.0","answer":""},"board_after":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]}},{"step":2,"timestamp":"2026-05-29T19:20:37.719431","board_before":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"observation":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"action":{"guess":"flame"},"reward":1.0,"terminated":true,"truncated":false,"info":{"won":"1.0","guesses_used":"2","guess":"flame","valid":"1.0","answer":"flame"},"board_after":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"green"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"green"},{"letter":"l","mark":"green"},{"letter":"a","mark":"green"},{"letter":"m","mark":"green"},{"letter":"e","mark":"green"}]}],"answer":"flame"},"episode_end":{"total_reward":1.0,"steps":2,"status":"completed","terminal_info":{"won":"1.0","guesses_used":"2","guess":"flame","valid":"1.0","answer":"flame","total_tokens":516}}}],"69ba2e19-12ac-4002-add0-edfb7d3a2aa1":[{"step":1,"timestamp":"2026-05-29T19:20:33.687489","board_before":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"observation":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":6,"history":[]},"action":{"guess":"crane"},"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"1","guess":"crane","valid":"1.0","answer":""},"board_after":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]}},{"step":2,"timestamp":"2026-05-29T19:20:37.959045","board_before":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"observation":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":5,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]}]},"action":{"guess":"flame"},"reward":0.0,"terminated":false,"truncated":false,"info":{"won":"0.0","guesses_used":"2","guess":"flame","valid":"1.0","answer":""},"board_after":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"gray"},{"letter":"l","mark":"yellow"},{"letter":"a","mark":"yellow"},{"letter":"m","mark":"gray"},{"letter":"e","mark":"green"}]}]}},{"step":3,"timestamp":"2026-05-29T19:20:42.410465","board_before":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"gray"},{"letter":"l","mark":"yellow"},{"letter":"a","mark":"yellow"},{"letter":"m","mark":"gray"},{"letter":"e","mark":"green"}]}]},"observation":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":4,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"gray"},{"letter":"l","mark":"yellow"},{"letter":"a","mark":"yellow"},{"letter":"m","mark":"gray"},{"letter":"e","mark":"green"}]}]},"action":{"guess":"table"},"reward":1.0,"terminated":true,"truncated":false,"info":{"won":"1.0","guesses_used":"3","guess":"table","valid":"1.0","answer":"table"},"board_after":{"instructions":"Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.","candidate_words":["apple","brave","crane","delta","flame","grape","light","mango","plant","river","sharp","stone","table","tiger","train","vivid","water","whale","zebra"],"max_guesses":6,"guesses_remaining":3,"history":[{"guess":"crane","valid":true,"feedback":[{"letter":"c","mark":"gray"},{"letter":"r","mark":"gray"},{"letter":"a","mark":"yellow"},{"letter":"n","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"flame","valid":true,"feedback":[{"letter":"f","mark":"gray"},{"letter":"l","mark":"yellow"},{"letter":"a","mark":"yellow"},{"letter":"m","mark":"gray"},{"letter":"e","mark":"green"}]},{"guess":"table","valid":true,"feedback":[{"letter":"t","mark":"green"},{"letter":"a","mark":"green"},{"letter":"b","mark":"green"},{"letter":"l","mark":"green"},{"letter":"e","mark":"green"}]}],"answer":"table"},"episode_end":{"total_reward":1.0,"steps":3,"status":"completed","terminal_info":{"won":"1.0","guesses_used":"3","guess":"table","valid":"1.0","answer":"table","total_tokens":892}}}]}}
+{
+  "schema_version": "1",
+  "exported_at": "2026-05-29T19:37:59.745736+00:00",
+  "visibility": "private",
+  "domain_id": "85ec56ce-8e26-40d9-bfbb-879097f8d958",
+  "domain_name": "Wordle",
+  "binding_vow_version": "1.0.0",
+  "run": {
+    "id": "5cdaff71-a79c-4c54-aff5-30054c1a89b3",
+    "config": {
+      "domain_id": "85ec56ce-8e26-40d9-bfbb-879097f8d958",
+      "binding_vow_version": "1.0.0",
+      "agent_config": {
+        "model": "gemini/gemini-3.1-flash-lite",
+        "system_prompt": null,
+        "techniques": [],
+        "temperature": 0.0,
+        "max_tokens": 512
+      },
+      "seed_set": null,
+      "num_episodes": 3,
+      "max_parallel": 2,
+      "env_id": "3fbec49c-776d-41db-945a-9ab193ac70e2"
+    },
+    "requester_id": "363",
+    "status": "completed",
+    "created_at": "2026-05-29T19:20:32.583980",
+    "completed_at": "2026-05-29T19:20:43.384453",
+    "scores": {
+      "win_rate": 1.0,
+      "average_reward": 1.0
+    },
+    "team_id": null,
+    "env_id": "3fbec49c-776d-41db-945a-9ab193ac70e2"
+  },
+  "episodes": [
+    {
+      "id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+      "run_id": "5cdaff71-a79c-4c54-aff5-30054c1a89b3",
+      "seed": 2,
+      "status": "completed",
+      "started_at": "2026-05-29T19:20:33.093904",
+      "ended_at": "2026-05-29T19:20:35.605971",
+      "steps": 2,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "won": "1.0",
+        "guess": "brave",
+        "valid": "1.0",
+        "answer": "brave",
+        "guesses_used": "2",
+        "total_tokens": 505
+      }
+    },
+    {
+      "id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+      "run_id": "5cdaff71-a79c-4c54-aff5-30054c1a89b3",
+      "seed": 1,
+      "status": "completed",
+      "started_at": "2026-05-29T19:20:33.093841",
+      "ended_at": "2026-05-29T19:20:38.936243",
+      "steps": 2,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "won": "1.0",
+        "guess": "flame",
+        "valid": "1.0",
+        "answer": "flame",
+        "guesses_used": "2",
+        "total_tokens": 516
+      }
+    },
+    {
+      "id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+      "run_id": "5cdaff71-a79c-4c54-aff5-30054c1a89b3",
+      "seed": 0,
+      "status": "completed",
+      "started_at": "2026-05-29T19:20:33.093737",
+      "ended_at": "2026-05-29T19:20:43.238485",
+      "steps": 3,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "won": "1.0",
+        "guess": "table",
+        "valid": "1.0",
+        "answer": "table",
+        "guesses_used": "3",
+        "total_tokens": 892
+      }
+    }
+  ],
+  "traces": {
+    "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0": [
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 0,
+        "timestamp": "2026-05-29T19:20:33.686130",
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 2
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 0,
+        "timestamp": "2026-05-29T19:20:33.787771",
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 6,
+            "history": []
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:33.790176",
+        "event_type": "observation",
+        "payload": {
+          "phase": "before_agent",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 6,
+            "history": []
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:34.886608",
+        "event_type": "action",
+        "payload": {
+          "action": {
+            "guess": "crane"
+          }
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:34.415045",
+        "event_type": "technique_event",
+        "payload": {
+          "kind": "token_usage",
+          "step_tokens": 215,
+          "prompt_tokens": 205,
+          "completion_tokens": 10,
+          "cumulative_tokens": 215
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:34.902619",
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.0,
+          "terminated": false,
+          "truncated": false,
+          "info": {
+            "won": "0.0",
+            "guesses_used": "1",
+            "guess": "crane",
+            "valid": "1.0",
+            "answer": ""
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:34.903943",
+        "event_type": "observation",
+        "payload": {
+          "phase": "after_env",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 5,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:34.904601",
+        "event_type": "observation",
+        "payload": {
+          "phase": "before_agent",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 5,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:35.576293",
+        "event_type": "action",
+        "payload": {
+          "action": {
+            "guess": "brave"
+          }
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:35.574445",
+        "event_type": "technique_event",
+        "payload": {
+          "kind": "token_usage",
+          "step_tokens": 290,
+          "prompt_tokens": 280,
+          "completion_tokens": 10,
+          "cumulative_tokens": 505
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:35.590465",
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "won": "1.0",
+            "guesses_used": "2",
+            "guess": "brave",
+            "valid": "1.0",
+            "answer": "brave"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:35.590950",
+        "event_type": "observation",
+        "payload": {
+          "phase": "after_env",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 4,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              },
+              {
+                "guess": "brave",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "b",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "v",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ],
+            "answer": "brave"
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:35.605480",
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 2,
+          "status": "completed",
+          "terminal_info": {
+            "won": "1.0",
+            "guesses_used": "2",
+            "guess": "brave",
+            "valid": "1.0",
+            "answer": "brave",
+            "total_tokens": 505
+          },
+          "total_tokens": 505
+        }
+      }
+    ],
+    "e431802a-f9be-4df0-9175-314bc4b5c06e": [
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 0,
+        "timestamp": "2026-05-29T19:20:33.642095",
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 1
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 0,
+        "timestamp": "2026-05-29T19:20:33.788699",
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 6,
+            "history": []
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:33.789598",
+        "event_type": "observation",
+        "payload": {
+          "phase": "before_agent",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 6,
+            "history": []
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.700360",
+        "event_type": "action",
+        "payload": {
+          "action": {
+            "guess": "crane"
+          }
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.697053",
+        "event_type": "technique_event",
+        "payload": {
+          "kind": "token_usage",
+          "step_tokens": 215,
+          "prompt_tokens": 205,
+          "completion_tokens": 10,
+          "cumulative_tokens": 215
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.716536",
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.0,
+          "terminated": false,
+          "truncated": false,
+          "info": {
+            "won": "0.0",
+            "guesses_used": "1",
+            "guess": "crane",
+            "valid": "1.0",
+            "answer": ""
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.717919",
+        "event_type": "observation",
+        "payload": {
+          "phase": "after_env",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 5,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:37.719431",
+        "event_type": "observation",
+        "payload": {
+          "phase": "before_agent",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 5,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:38.896383",
+        "event_type": "action",
+        "payload": {
+          "action": {
+            "guess": "flame"
+          }
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:38.893849",
+        "event_type": "technique_event",
+        "payload": {
+          "kind": "token_usage",
+          "step_tokens": 301,
+          "prompt_tokens": 280,
+          "completion_tokens": 21,
+          "cumulative_tokens": 516
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:38.921170",
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "won": "1.0",
+            "guesses_used": "2",
+            "guess": "flame",
+            "valid": "1.0",
+            "answer": "flame"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:38.921657",
+        "event_type": "observation",
+        "payload": {
+          "phase": "after_env",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 4,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              },
+              {
+                "guess": "flame",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "f",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "l",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "m",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ],
+            "answer": "flame"
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "e431802a-f9be-4df0-9175-314bc4b5c06e",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:38.935736",
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 2,
+          "status": "completed",
+          "terminal_info": {
+            "won": "1.0",
+            "guesses_used": "2",
+            "guess": "flame",
+            "valid": "1.0",
+            "answer": "flame",
+            "total_tokens": 516
+          },
+          "total_tokens": 516
+        }
+      }
+    ],
+    "69ba2e19-12ac-4002-add0-edfb7d3a2aa1": [
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 0,
+        "timestamp": "2026-05-29T19:20:33.582092",
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 0
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 0,
+        "timestamp": "2026-05-29T19:20:33.642375",
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 6,
+            "history": []
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:33.687489",
+        "event_type": "observation",
+        "payload": {
+          "phase": "before_agent",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 6,
+            "history": []
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.940320",
+        "event_type": "action",
+        "payload": {
+          "action": {
+            "guess": "crane"
+          }
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.938019",
+        "event_type": "technique_event",
+        "payload": {
+          "kind": "token_usage",
+          "step_tokens": 215,
+          "prompt_tokens": 205,
+          "completion_tokens": 10,
+          "cumulative_tokens": 215
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.958180",
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.0,
+          "terminated": false,
+          "truncated": false,
+          "info": {
+            "won": "0.0",
+            "guesses_used": "1",
+            "guess": "crane",
+            "valid": "1.0",
+            "answer": ""
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:37.958626",
+        "event_type": "observation",
+        "payload": {
+          "phase": "after_env",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 5,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:37.959045",
+        "event_type": "observation",
+        "payload": {
+          "phase": "before_agent",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 5,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:42.395264",
+        "event_type": "action",
+        "payload": {
+          "action": {
+            "guess": "flame"
+          }
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:42.393202",
+        "event_type": "technique_event",
+        "payload": {
+          "kind": "token_usage",
+          "step_tokens": 301,
+          "prompt_tokens": 280,
+          "completion_tokens": 21,
+          "cumulative_tokens": 516
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:42.409550",
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.0,
+          "terminated": false,
+          "truncated": false,
+          "info": {
+            "won": "0.0",
+            "guesses_used": "2",
+            "guess": "flame",
+            "valid": "1.0",
+            "answer": ""
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:42.410056",
+        "event_type": "observation",
+        "payload": {
+          "phase": "after_env",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 4,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              },
+              {
+                "guess": "flame",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "f",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "l",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "m",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 3,
+        "timestamp": "2026-05-29T19:20:42.410465",
+        "event_type": "observation",
+        "payload": {
+          "phase": "before_agent",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 4,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              },
+              {
+                "guess": "flame",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "f",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "l",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "m",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 3,
+        "timestamp": "2026-05-29T19:20:43.204726",
+        "event_type": "action",
+        "payload": {
+          "action": {
+            "guess": "table"
+          }
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 3,
+        "timestamp": "2026-05-29T19:20:43.202457",
+        "event_type": "technique_event",
+        "payload": {
+          "kind": "token_usage",
+          "step_tokens": 376,
+          "prompt_tokens": 356,
+          "completion_tokens": 20,
+          "cumulative_tokens": 892
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 3,
+        "timestamp": "2026-05-29T19:20:43.222255",
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "won": "1.0",
+            "guesses_used": "3",
+            "guess": "table",
+            "valid": "1.0",
+            "answer": "table"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 3,
+        "timestamp": "2026-05-29T19:20:43.222759",
+        "event_type": "observation",
+        "payload": {
+          "phase": "after_env",
+          "data": {
+            "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+            "candidate_words": [
+              "apple",
+              "brave",
+              "crane",
+              "delta",
+              "flame",
+              "grape",
+              "light",
+              "mango",
+              "plant",
+              "river",
+              "sharp",
+              "stone",
+              "table",
+              "tiger",
+              "train",
+              "vivid",
+              "water",
+              "whale",
+              "zebra"
+            ],
+            "max_guesses": 6,
+            "guesses_remaining": 3,
+            "history": [
+              {
+                "guess": "crane",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "c",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "r",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "n",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              },
+              {
+                "guess": "flame",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "f",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "l",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "yellow"
+                  },
+                  {
+                    "letter": "m",
+                    "mark": "gray"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              },
+              {
+                "guess": "table",
+                "valid": true,
+                "feedback": [
+                  {
+                    "letter": "t",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "a",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "b",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "l",
+                    "mark": "green"
+                  },
+                  {
+                    "letter": "e",
+                    "mark": "green"
+                  }
+                ]
+              }
+            ],
+            "answer": "table"
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "69ba2e19-12ac-4002-add0-edfb7d3a2aa1",
+        "step": 3,
+        "timestamp": "2026-05-29T19:20:43.237760",
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 3,
+          "status": "completed",
+          "terminal_info": {
+            "won": "1.0",
+            "guesses_used": "3",
+            "guess": "table",
+            "valid": "1.0",
+            "answer": "table",
+            "total_tokens": 892
+          },
+          "total_tokens": 892
+        }
+      }
+    ]
+  },
+  "replay": {
+    "e5256370-5d2f-4f7c-ba00-5ce5eb93c5c0": [
+      {
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:33.790176",
+        "board_before": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "action": {
+          "guess": "crane"
+        },
+        "reward": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "info": {
+          "won": "0.0",
+          "guesses_used": "1",
+          "guess": "crane",
+          "valid": "1.0",
+          "answer": ""
+        },
+        "board_after": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:34.904601",
+        "board_before": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "action": {
+          "guess": "brave"
+        },
+        "reward": 1.0,
+        "terminated": true,
+        "truncated": false,
+        "info": {
+          "won": "1.0",
+          "guesses_used": "2",
+          "guess": "brave",
+          "valid": "1.0",
+          "answer": "brave"
+        },
+        "board_after": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 4,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            },
+            {
+              "guess": "brave",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "b",
+                  "mark": "green"
+                },
+                {
+                  "letter": "r",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "v",
+                  "mark": "green"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ],
+          "answer": "brave"
+        },
+        "episode_end": {
+          "total_reward": 1.0,
+          "steps": 2,
+          "status": "completed",
+          "terminal_info": {
+            "won": "1.0",
+            "guesses_used": "2",
+            "guess": "brave",
+            "valid": "1.0",
+            "answer": "brave",
+            "total_tokens": 505
+          }
+        }
+      }
+    ],
+    "e431802a-f9be-4df0-9175-314bc4b5c06e": [
+      {
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:33.789598",
+        "board_before": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "action": {
+          "guess": "crane"
+        },
+        "reward": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "info": {
+          "won": "0.0",
+          "guesses_used": "1",
+          "guess": "crane",
+          "valid": "1.0",
+          "answer": ""
+        },
+        "board_after": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:37.719431",
+        "board_before": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "action": {
+          "guess": "flame"
+        },
+        "reward": 1.0,
+        "terminated": true,
+        "truncated": false,
+        "info": {
+          "won": "1.0",
+          "guesses_used": "2",
+          "guess": "flame",
+          "valid": "1.0",
+          "answer": "flame"
+        },
+        "board_after": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 4,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            },
+            {
+              "guess": "flame",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "f",
+                  "mark": "green"
+                },
+                {
+                  "letter": "l",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "m",
+                  "mark": "green"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ],
+          "answer": "flame"
+        },
+        "episode_end": {
+          "total_reward": 1.0,
+          "steps": 2,
+          "status": "completed",
+          "terminal_info": {
+            "won": "1.0",
+            "guesses_used": "2",
+            "guess": "flame",
+            "valid": "1.0",
+            "answer": "flame",
+            "total_tokens": 516
+          }
+        }
+      }
+    ],
+    "69ba2e19-12ac-4002-add0-edfb7d3a2aa1": [
+      {
+        "step": 1,
+        "timestamp": "2026-05-29T19:20:33.687489",
+        "board_before": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "action": {
+          "guess": "crane"
+        },
+        "reward": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "info": {
+          "won": "0.0",
+          "guesses_used": "1",
+          "guess": "crane",
+          "valid": "1.0",
+          "answer": ""
+        },
+        "board_after": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-05-29T19:20:37.959045",
+        "board_before": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "action": {
+          "guess": "flame"
+        },
+        "reward": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "info": {
+          "won": "0.0",
+          "guesses_used": "2",
+          "guess": "flame",
+          "valid": "1.0",
+          "answer": ""
+        },
+        "board_after": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 4,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            },
+            {
+              "guess": "flame",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "f",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "l",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "m",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 3,
+        "timestamp": "2026-05-29T19:20:42.410465",
+        "board_before": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 4,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            },
+            {
+              "guess": "flame",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "f",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "l",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "m",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 4,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            },
+            {
+              "guess": "flame",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "f",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "l",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "m",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ]
+        },
+        "action": {
+          "guess": "table"
+        },
+        "reward": 1.0,
+        "terminated": true,
+        "truncated": false,
+        "info": {
+          "won": "1.0",
+          "guesses_used": "3",
+          "guess": "table",
+          "valid": "1.0",
+          "answer": "table"
+        },
+        "board_after": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 3,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            },
+            {
+              "guess": "flame",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "f",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "l",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "m",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            },
+            {
+              "guess": "table",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "t",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                },
+                {
+                  "letter": "b",
+                  "mark": "green"
+                },
+                {
+                  "letter": "l",
+                  "mark": "green"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                }
+              ]
+            }
+          ],
+          "answer": "table"
+        },
+        "episode_end": {
+          "total_reward": 1.0,
+          "steps": 3,
+          "status": "completed",
+          "terminal_info": {
+            "won": "1.0",
+            "guesses_used": "3",
+            "guess": "table",
+            "valid": "1.0",
+            "answer": "table",
+            "total_tokens": 892
+          }
+        }
+      }
+    ]
+  }
+}
