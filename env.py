@@ -155,7 +155,22 @@ class WordleEnv(BaseEnv):
             info=self._info(won=won, done=done, guess=guess, valid=True),
         )
 
-    def render(self, mode: str = "text") -> str:
+    def render(self, mode: str = "text") -> Any:
+        if mode in {"json", "state", "board"}:
+            done = self._is_done()
+            payload: dict[str, Any] = {
+                "board": self._board_rows(),
+                "candidate_words": ANSWERS,
+                "guesses_used": self._guesses_used,
+                "guesses_remaining": max(0, self._max_guesses - self._guesses_used),
+                "max_guesses": self._max_guesses,
+                "done": done,
+                "won": self._won(),
+            }
+            if done and self._secret is not None:
+                payload["answer"] = self._secret
+            return payload
+
         rows = []
         for row in self._history:
             if not row["valid"]:
@@ -189,6 +204,48 @@ class WordleEnv(BaseEnv):
             "valid": "1.0" if valid else "0.0",
             "answer": self._secret if done and self._secret is not None else "",
         }
+
+    def _won(self) -> bool:
+        return bool(
+            self._secret is not None
+            and self._history
+            and self._history[-1].get("valid")
+            and self._history[-1].get("guess") == self._secret
+        )
+
+    def _is_done(self) -> bool:
+        return self._won() or self._guesses_used >= self._max_guesses
+
+    def _board_rows(self) -> list[dict[str, Any]]:
+        rows = []
+        for row in self._history:
+            if not row["valid"]:
+                rows.append(
+                    {
+                        "guess": row["guess"],
+                        "valid": False,
+                        "message": row.get("message", "Invalid guess."),
+                        "tiles": [],
+                    }
+                )
+                continue
+            rows.append(
+                {
+                    "guess": row["guess"],
+                    "valid": True,
+                    "tiles": row["feedback"],
+                }
+            )
+
+        for _ in range(self._max_guesses - len(rows)):
+            rows.append(
+                {
+                    "guess": "",
+                    "valid": True,
+                    "tiles": [{"letter": "", "mark": "empty"} for _ in range(5)],
+                }
+            )
+        return rows
 
     @staticmethod
     def _parse_jsonish_action(text: str) -> str | None:

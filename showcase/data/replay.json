@@ -1,0 +1,308 @@
+{
+  "schema_version": "1",
+  "domain_id": "wordle-env",
+  "domain_name": "Wordle",
+  "binding_vow_version": "1.0.0",
+  "visibility": "gallery_public",
+  "run": {
+    "id": "sample-run",
+    "status": "completed",
+    "config": {
+      "domain_id": "wordle-env",
+      "binding_vow_version": "1.0.0",
+      "agent_config": {
+        "model": "gemini/gemini-3.1-flash-lite"
+      }
+    },
+    "aggregate_scores": {
+      "win_rate": 1.0,
+      "average_reward": 1.0
+    }
+  },
+  "episodes": [
+    {
+      "id": "sample-episode",
+      "status": "completed",
+      "total_reward": 1.0,
+      "steps": 2,
+      "terminal_info": {
+        "won": "1.0",
+        "answer": "delta"
+      }
+    }
+  ],
+  "replay": {
+    "sample-episode": [
+      {
+        "step": 1,
+        "observation": {
+          "instructions": "Guess the hidden five-letter word. The answer is one of candidate_words. Submit an action like {\"guess\": \"crane\"}.",
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "board_before": {
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 6,
+          "history": []
+        },
+        "reasoning": "A broad opener should test common vowels and consonants, so I will start with crane.",
+        "action": {
+          "guess": "crane"
+        },
+        "board_after": {
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "yellow"
+                }
+              ]
+            }
+          ]
+        },
+        "reward": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "info": {
+          "won": "0.0",
+          "guess": "crane",
+          "answer": ""
+        }
+      },
+      {
+        "step": 2,
+        "observation": {
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 5,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "yellow"
+                }
+              ]
+            }
+          ]
+        },
+        "reasoning": "The answer contains a and e but not at the crane positions, and c/r/n are absent. Delta fits those constraints.",
+        "action": {
+          "guess": "delta"
+        },
+        "board_after": {
+          "candidate_words": [
+            "apple",
+            "brave",
+            "crane",
+            "delta",
+            "flame",
+            "grape",
+            "light",
+            "mango",
+            "plant",
+            "river",
+            "sharp",
+            "stone",
+            "table",
+            "tiger",
+            "train",
+            "vivid",
+            "water",
+            "whale",
+            "zebra"
+          ],
+          "max_guesses": 6,
+          "guesses_remaining": 4,
+          "history": [
+            {
+              "guess": "crane",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "c",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "r",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "a",
+                  "mark": "yellow"
+                },
+                {
+                  "letter": "n",
+                  "mark": "gray"
+                },
+                {
+                  "letter": "e",
+                  "mark": "yellow"
+                }
+              ]
+            },
+            {
+              "guess": "delta",
+              "valid": true,
+              "feedback": [
+                {
+                  "letter": "d",
+                  "mark": "green"
+                },
+                {
+                  "letter": "e",
+                  "mark": "green"
+                },
+                {
+                  "letter": "l",
+                  "mark": "green"
+                },
+                {
+                  "letter": "t",
+                  "mark": "green"
+                },
+                {
+                  "letter": "a",
+                  "mark": "green"
+                }
+              ],
+              "answer": "delta"
+            }
+          ],
+          "answer": "delta"
+        },
+        "reward": 1.0,
+        "terminated": true,
+        "truncated": false,
+        "info": {
+          "won": "1.0",
+          "guess": "delta",
+          "answer": "delta"
+        }
+      }
+    ]
+  }
+}

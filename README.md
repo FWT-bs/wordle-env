@@ -34,7 +34,13 @@ python3 -m venv .venv
 .venv/bin/python adapter.py --port 8765
 ```
 
-In another terminal, check the HTTP contract:
+Open the visual UI at:
+
+```text
+http://localhost:8765/
+```
+
+In another terminal, you can also check the HTTP contract:
 
 ```bash
 curl -sS http://localhost:8765/health
@@ -46,6 +52,10 @@ curl -sS -X POST http://localhost:8765/reset \
 curl -sS -X POST http://localhost:8765/step \
   -H 'Content-Type: application/json' \
   -d '{"episode_id":"demo","action":{"guess":"crane"}}'
+
+curl -sS -X POST http://localhost:8765/render \
+  -H 'Content-Type: application/json' \
+  -d '{"episode_id":"demo","mode":"json"}'
 
 curl -sS -X POST http://localhost:8765/close \
   -H 'Content-Type: application/json' \
@@ -76,3 +86,25 @@ Push this folder as its own public GitHub repo. The repo root should contain
 
 Then open the Mesocosm UI, submit the GitHub repo URL as a developer
 environment, wait for it to become ready, and create a run from that environment.
+
+## Showcase UI
+
+The repo also has a static replay UI in `showcase/`.
+
+Local preview:
+
+```bash
+python3 -m http.server 8080 -d showcase
+```
+
+Open:
+
+```text
+http://localhost:8080/
+```
+
+After a prod run completes, export it into the UI:
+
+```bash
+.venv/bin/mesocosm run export RUN_ID -o showcase/data/replay.json
+```

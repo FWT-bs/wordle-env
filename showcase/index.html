@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wordle Bench Showcase</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c1714;
+      --surface: #10241c;
+      --surface-2: #152d23;
+      --line: #29483b;
+      --text: #f3f7f0;
+      --muted: #a5baac;
+      --green: #5aa469;
+      --yellow: #c9a64d;
+      --gray: #4e5a53;
+      --empty: #1a3329;
+      --ink-on-yellow: #20190d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #0f2119;
+    }
+
+    .header-inner {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0;
+      display: grid;
+      grid-template-columns: minmax(330px, 450px) 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .board {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(5, 58px);
+      gap: 8px;
+    }
+
+    .tile {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--empty);
+      font-weight: 800;
+      font-size: 28px;
+      text-transform: uppercase;
+    }
+
+    .tile.green { background: var(--green); border-color: var(--green); }
+    .tile.yellow { background: var(--yellow); border-color: var(--yellow); color: var(--ink-on-yellow); }
+    .tile.gray { background: var(--gray); border-color: var(--gray); }
+
+    .timeline {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .step {
+      min-width: 42px;
+      height: 38px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .step.active {
+      background: #d8ead8;
+      color: #10241c;
+      border-color: #d8ead8;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .fact {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .fact .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .fact .value {
+      font-size: 16px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .detail-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .block {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .block h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .reasoning {
+      white-space: pre-wrap;
+      line-height: 1.55;
+      margin: 0;
+      color: #dce8dd;
+    }
+
+    .words {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .word {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    input, select {
+      height: 38px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #081511;
+      color: var(--text);
+      padding: 0 10px;
+      min-width: 0;
+    }
+
+    input[type="file"] {
+      max-width: 230px;
+      padding-top: 8px;
+    }
+
+    button {
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #d8ead8;
+      color: #10241c;
+      font-weight: 800;
+      padding: 0 12px;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .message {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+      min-height: 18px;
+    }
+
+    @media (max-width: 860px) {
+      .header-inner {
+        display: grid;
+      }
+
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .row {
+        grid-template-columns: repeat(5, minmax(44px, 1fr));
+      }
+
+      .tile {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+      }
+
+      .facts {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="header-inner">
+        <div>
+          <h1>Wordle Bench Showcase</h1>
+          <div class="meta" id="run-meta">Loading replay...</div>
+        </div>
+        <div class="toolbar">
+          <select id="episode-select" aria-label="Episode"></select>
+          <input id="run-id" placeholder="run id" />
+          <button id="load-run">Load</button>
+          <input id="file" type="file" accept="application/json,.json" />
+        </div>
+      </div>
+    </header>
+
+    <div class="shell">
+      <section class="panel">
+        <div class="title-row">
+          <h2 id="episode-title">Episode</h2>
+          <div class="meta" id="turn-label"></div>
+        </div>
+        <div class="board" id="board"></div>
+        <div class="timeline" id="timeline"></div>
+        <div class="facts">
+          <div class="fact">
+            <div class="label">Action</div>
+            <div class="value" id="action">-</div>
+          </div>
+          <div class="fact">
+            <div class="label">Reward</div>
+            <div class="value" id="reward">-</div>
+          </div>
+          <div class="fact">
+            <div class="label">Result</div>
+            <div class="value" id="result">-</div>
+          </div>
+        </div>
+        <div class="message" id="message"></div>
+      </section>
+
+      <section class="detail-grid">
+        <div class="block">
+          <h3>Agent Reasoning</h3>
+          <p class="reasoning" id="reasoning"></p>
+        </div>
+        <div class="block">
+          <h3>Candidate Words</h3>
+          <div class="words" id="words"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const API_BASE = "https://api.swecc.org/bench";
+    const SAMPLE_PATH = "data/replay.json";
+
+    const state = {
+      data: null,
+      episodeId: null,
+      turnIndex: 0,
+    };
+
+    const els = {
+      runMeta: document.querySelector("#run-meta"),
+      episodeSelect: document.querySelector("#episode-select"),
+      episodeTitle: document.querySelector("#episode-title"),
+      turnLabel: document.querySelector("#turn-label"),
+      board: document.querySelector("#board"),
+      timeline: document.querySelector("#timeline"),
+      action: document.querySelector("#action"),
+      reward: document.querySelector("#reward"),
+      result: document.querySelector("#result"),
+      reasoning: document.querySelector("#reasoning"),
+      words: document.querySelector("#words"),
+      message: document.querySelector("#message"),
+      runId: document.querySelector("#run-id"),
+      loadRun: document.querySelector("#load-run"),
+      file: document.querySelector("#file"),
+    };
+
+    function getRunIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("run") || "";
+    }
+
+    async function loadInitial() {
+      const runId = getRunIdFromUrl();
+      if (runId) {
+        els.runId.value = runId;
+        await loadRun(runId);
+        return;
+      }
+      await loadFromPath(SAMPLE_PATH);
+    }
+
+    async function loadRun(runId) {
+      setMessage("Loading run export...");
+      const response = await fetch(`${API_BASE}/v1/runs/${encodeURIComponent(runId)}/export`);
+      if (!response.ok) {
+        throw new Error(`Could not fetch run export (${response.status}).`);
+      }
+      const data = await response.json();
+      setReplay(data, `Loaded run ${runId}.`);
+    }
+
+    async function loadFromPath(path) {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Could not load ${path}.`);
+      }
+      const data = await response.json();
+      setReplay(data, "Loaded local replay data.");
+    }
+
+    function setReplay(data, message) {
+      state.data = data;
+      const episodeIds = Object.keys(data.replay || {});
+      state.episodeId = episodeIds[0] || null;
+      state.turnIndex = 0;
+
+      els.episodeSelect.innerHTML = episodeIds
+        .map((id, index) => `<option value="${id}">Episode ${index + 1}</option>`)
+        .join("");
+
+      const run = data.run || {};
+      const model = run.config?.agent_config?.model || firstTurn()?.model || "unknown model";
+      const domain = data.domain_name || data.domain_id || "Wordle";
+      const score = run.aggregate_scores?.win_rate;
+      els.runMeta.textContent = `${domain} · ${model}${score !== undefined ? ` · win rate ${score}` : ""}`;
+      setMessage(message);
+      render();
+    }
+
+    function turns() {
+      if (!state.data || !state.episodeId) return [];
+      return state.data.replay[state.episodeId] || [];
+    }
+
+    function firstTurn() {
+      const replay = state.data?.replay || {};
+      const firstEpisode = Object.keys(replay)[0];
+      return firstEpisode ? replay[firstEpisode][0] : null;
+    }
+
+    function selectedTurn() {
+      const list = turns();
+      return list[Math.min(state.turnIndex, Math.max(0, list.length - 1))] || null;
+    }
+
+    function selectedEpisode() {
+      return (state.data?.episodes || []).find((episode) => episode.id === state.episodeId);
+    }
+
+    function bestObservation(turn) {
+      return turn?.board_after || turn?.observation || turn?.board_before || {};
+    }
+
+    function render() {
+      const list = turns();
+      const turn = selectedTurn();
+      const episode = selectedEpisode();
+
+      els.episodeTitle.textContent = episode ? `Episode ${shortId(episode.id)}` : "Episode";
+      els.turnLabel.textContent = turn ? `Step ${turn.step} of ${list.length}` : "";
+
+      renderTimeline(list);
+      renderBoard(bestObservation(turn));
+      renderDetails(turn, episode);
+    }
+
+    function renderTimeline(list) {
+      els.timeline.innerHTML = list.map((turn, index) => {
+        const active = index === state.turnIndex ? " active" : "";
+        return `<button class="step${active}" data-step="${index}">${turn.step}</button>`;
+      }).join("");
+    }
+
+    function renderBoard(observation) {
+      const maxGuesses = observation.max_guesses || 6;
+      const rows = (observation.history || []).map((row) => {
+        if (!row.valid) {
+          return { valid: false, guess: row.guess || "", tiles: [] };
+        }
+        return { valid: true, tiles: row.feedback || row.tiles || [] };
+      });
+
+      while (rows.length < maxGuesses) {
+        rows.push({
+          valid: true,
+          tiles: Array.from({ length: 5 }, () => ({ letter: "", mark: "empty" })),
+        });
+      }
+
+      els.board.innerHTML = rows.map((row) => {
+        const tiles = row.valid
+          ? row.tiles
+          : Array.from({ length: 5 }, (_, i) => ({
+              letter: (row.guess || "")[i] || "",
+              mark: "gray",
+            }));
+        return `<div class="row">${tiles.map((tile) => {
+          const cls = tile.mark || "empty";
+          const letter = escapeHtml(tile.letter || "");
+          return `<div class="tile ${cls}">${letter}</div>`;
+        }).join("")}</div>`;
+      }).join("");
+
+      els.words.innerHTML = (observation.candidate_words || [])
+        .map((word) => `<span class="word">${escapeHtml(word)}</span>`)
+        .join("");
+    }
+
+    function renderDetails(turn, episode) {
+      if (!turn) {
+        els.action.textContent = "-";
+        els.reward.textContent = "-";
+        els.result.textContent = "-";
+        els.reasoning.textContent = "No replay turns found.";
+        return;
+      }
+
+      els.action.textContent = actionText(turn.action);
+      els.reward.textContent = turn.reward ?? "-";
+      const terminal = turn.terminated || turn.truncated;
+      const won = turn.info?.won === "1.0" || episode?.terminal_info?.won === "1.0";
+      els.result.textContent = terminal ? (won ? "Solved" : "Ended") : "Running";
+      els.reasoning.textContent = turn.reasoning || "Reasoning was not included in this export.";
+    }
+
+    function actionText(action) {
+      if (typeof action === "string") return action;
+      if (action?.guess) return action.guess;
+      if (action?.action?.guess) return action.action.guess;
+      return action ? JSON.stringify(action) : "-";
+    }
+
+    function shortId(id) {
+      return String(id || "").slice(0, 8);
+    }
+
+    function setMessage(text) {
+      els.message.textContent = text || "";
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    els.timeline.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-step]");
+      if (!button) return;
+      state.turnIndex = Number(button.dataset.step);
+      render();
+    });
+
+    els.episodeSelect.addEventListener("change", () => {
+      state.episodeId = els.episodeSelect.value;
+      state.turnIndex = 0;
+      render();
+    });
+
+    els.loadRun.addEventListener("click", async () => {
+      try {
+        await loadRun(els.runId.value.trim());
+      } catch (error) {
+        setMessage(error.message);
+      }
+    });
+
+    els.file.addEventListener("change", async () => {
+      const file = els.file.files?.[0];
+      if (!file) return;
+      try {
+        setReplay(JSON.parse(await file.text()), `Loaded ${file.name}.`);
+      } catch (error) {
+        setMessage(error.message);
+      }
+    });
+
+    loadInitial().catch((error) => {
+      setMessage(error.message);
+      els.runMeta.textContent = "No replay loaded";
+    });
+  </script>
+</body>
+</html>
