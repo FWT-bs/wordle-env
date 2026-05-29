@@ -1,0 +1,53 @@
+{
+  "id": "wordle-env",
+  "adapter": "adapter.py",
+  "name": "Wordle",
+  "description": "A small Wordle-style benchmark where the agent has six tries to guess a hidden five-letter word.",
+  "binding_vow": {
+    "version": "1.0.0",
+    "tier": "tier1",
+    "description": "The agent receives Wordle-style feedback after each guess and must infer the hidden five-letter word.",
+    "observation_space": {
+      "type": "json",
+      "description": "Object with instructions, guesses_remaining, history, and answer only after the episode ends."
+    },
+    "action_space": {
+      "type": "json",
+      "schema_ref": "{\"type\":\"object\",\"properties\":{\"guess\":{\"type\":\"string\",\"description\":\"Exactly one five-letter lowercase word, for example crane.\",\"pattern\":\"^[a-zA-Z]{5}$\"}},\"required\":[\"guess\"],\"additionalProperties\":false}",
+      "description": "Submit an object like {\"guess\": \"crane\"}."
+    },
+    "reward": {
+      "type": "binary",
+      "range": {
+        "low": 0.0,
+        "high": 1.0
+      },
+      "description": "1.0 if the hidden word is guessed, otherwise 0.0."
+    },
+    "episode": {
+      "max_steps": 6,
+      "deterministic_reset": true,
+      "supports_seed": true,
+      "parallel_episodes": 1,
+      "observability": "full"
+    },
+    "techniques": []
+  },
+  "scoring": {
+    "primary_metric": "win_rate",
+    "higher_is_better": true,
+    "metrics": [
+      {
+        "name": "win_rate",
+        "type": "terminal_field",
+        "field": "won",
+        "aggregation": "pass_rate"
+      },
+      {
+        "name": "average_reward",
+        "type": "episode_reward",
+        "aggregation": "mean"
+      }
+    ]
+  }
+}

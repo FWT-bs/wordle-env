@@ -1,0 +1,2 @@
+# Optional environment dependencies go here.
+# The default Wordle example only uses the Python standard library.
