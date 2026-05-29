@@ -66,9 +66,77 @@
       margin: 0 auto;
       padding: 24px 0;
       display: grid;
-      grid-template-columns: minmax(330px, 450px) 1fr;
+      grid-template-columns: 260px minmax(330px, 450px) 1fr;
       gap: 22px;
       align-items: start;
+    }
+
+    .runs-panel {
+      max-height: calc(100vh - 140px);
+      overflow: auto;
+      position: sticky;
+      top: 18px;
+    }
+
+    .runs-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .run-item {
+      text-align: left;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      color: var(--text);
+      display: grid;
+      gap: 4px;
+      height: auto;
+      font-weight: 500;
+    }
+
+    .run-item.active {
+      border-color: #d8ead8;
+      background: #16332a;
+    }
+
+    .run-item .id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .run-item .model {
+      font-size: 13px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .run-item .row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+      grid-template-columns: none;
+      gap: 6px;
+    }
+
+    .run-item .status {
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .run-item .status.good { color: var(--green); }
+    .run-item .status.bad { color: #e07879; }
+    .run-item .status.live { color: var(--yellow); }
+
+    .runs-empty {
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .panel {
@@ -266,6 +334,11 @@
         grid-template-columns: 1fr;
       }
 
+      .runs-panel {
+        position: static;
+        max-height: none;
+      }
+
       .row {
         grid-template-columns: repeat(5, minmax(44px, 1fr));
       }
@@ -300,6 +373,16 @@
     </header>
 
     <div class="shell">
+      <section class="panel runs-panel">
+        <div class="title-row">
+          <h2>Runs</h2>
+          <button id="refresh-runs" class="secondary" title="Reload runs.json">Refresh</button>
+        </div>
+        <div class="runs-list" id="runs-list">
+          <p class="runs-empty">Loading run index...</p>
+        </div>
+      </section>
+
       <section class="panel">
         <div class="title-row">
           <h2 id="episode-title">Episode</h2>
@@ -339,12 +422,15 @@
 
   <script>
     const API_BASE = "https://api.swecc.org/bench";
+    const RUNS_INDEX_PATH = "data/runs.json";
     const SAMPLE_PATH = "data/replay.json";
 
     const state = {
       data: null,
       episodeId: null,
       turnIndex: 0,
+      index: [],
+      activeRunId: null,
     };
 
     const els = {
@@ -363,6 +449,8 @@
       runId: document.querySelector("#run-id"),
       loadRun: document.querySelector("#load-run"),
       file: document.querySelector("#file"),
+      runsList: document.querySelector("#runs-list"),
+      refreshRuns: document.querySelector("#refresh-runs"),
     };
 
     function getRunIdFromUrl() {
@@ -370,11 +458,35 @@
       return params.get("run") || "";
     }
 
+    async function loadIndex() {
+      try {
+        const response = await fetch(RUNS_INDEX_PATH, { cache: "no-store" });
+        if (!response.ok) {
+          state.index = [];
+          renderRunsList();
+          return [];
+        }
+        const payload = await response.json();
+        state.index = Array.isArray(payload.runs) ? payload.runs : [];
+        renderRunsList();
+        return state.index;
+      } catch (error) {
+        state.index = [];
+        renderRunsList();
+        return [];
+      }
+    }
+
     async function loadInitial() {
+      const indexEntries = await loadIndex();
       const runId = getRunIdFromUrl();
       if (runId) {
         els.runId.value = runId;
         await loadRun(runId);
+        return;
+      }
+      if (indexEntries.length > 0) {
+        await loadRun(indexEntries[0].id);
         return;
       }
       await loadFromPath(SAMPLE_PATH);
@@ -382,12 +494,28 @@
 
     async function loadRun(runId) {
       setMessage("Loading run export...");
+      state.activeRunId = runId;
+      renderRunsList();
+      const entry = state.index.find((r) => r.id === runId);
+      if (entry?.file) {
+        const localPath = `data/${entry.file}`;
+        try {
+          const response = await fetch(localPath, { cache: "no-store" });
+          if (response.ok) {
+            const data = await response.json();
+            setReplay(data, `Loaded ${runId} from showcase.`);
+            return;
+          }
+        } catch (error) {
+          // fall through to API
+        }
+      }
       const response = await fetch(`${API_BASE}/v1/runs/${encodeURIComponent(runId)}/export`);
       if (!response.ok) {
         throw new Error(`Could not fetch run export (${response.status}).`);
       }
       const data = await response.json();
-      setReplay(data, `Loaded run ${runId}.`);
+      setReplay(data, `Loaded run ${runId} from API.`);
     }
 
     async function loadFromPath(path) {
@@ -397,6 +525,42 @@
       }
       const data = await response.json();
       setReplay(data, "Loaded local replay data.");
+    }
+
+    function renderRunsList() {
+      if (!state.index.length) {
+        els.runsList.innerHTML = `<p class="runs-empty">No runs in <code>data/runs.json</code>. Drop exports into <code>data/runs/</code> and run the indexer.</p>`;
+        return;
+      }
+      els.runsList.innerHTML = state.index.map((entry) => {
+        const active = entry.id === state.activeRunId ? " active" : "";
+        const status = entry.status || "unknown";
+        const statusClass = statusTone(status);
+        const score = entry.scores?.win_rate ?? entry.scores?.average_reward;
+        const scoreText = score === undefined ? "" : `score ${formatScore(score)}`;
+        return `<button class="run-item${active}" data-run-id="${escapeHtml(entry.id)}">
+          <span class="model">${escapeHtml(entry.model || "unknown model")}</span>
+          <span class="id">${escapeHtml(shortId(entry.id))} · ${escapeHtml(entry.domain || "")}</span>
+          <span class="row">
+            <span class="status ${statusClass}">${escapeHtml(status)}</span>
+            <span>${escapeHtml(scoreText)}</span>
+          </span>
+        </button>`;
+      }).join("");
+    }
+
+    function statusTone(status) {
+      if (status === "completed") return "good";
+      if (status === "failed" || status === "cancelled") return "bad";
+      if (status === "running") return "live";
+      return "";
+    }
+
+    function formatScore(value) {
+      if (typeof value === "number") {
+        return Number.isInteger(value) ? String(value) : value.toFixed(3);
+      }
+      return String(value);
     }
 
     function setReplay(data, message) {
@@ -557,6 +721,22 @@
       } catch (error) {
         setMessage(error.message);
       }
+    });
+
+    els.runsList.addEventListener("click", async (event) => {
+      const button = event.target.closest("button[data-run-id]");
+      if (!button) return;
+      try {
+        await loadRun(button.dataset.runId);
+      } catch (error) {
+        setMessage(error.message);
+      }
+    });
+
+    els.refreshRuns.addEventListener("click", async () => {
+      setMessage("Refreshing run index...");
+      await loadIndex();
+      setMessage(state.index.length ? `Index has ${state.index.length} run(s).` : "Index is empty.");
     });
 
     els.file.addEventListener("change", async () => {

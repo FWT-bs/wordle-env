@@ -108,3 +108,33 @@ After a prod run completes, export it into the UI:
 ```bash
 .venv/bin/mesocosm run export RUN_ID -o showcase/data/replay.json
 ```
+
+## Publish Multiple Runs To GitHub Pages
+
+The showcase can list any number of runs. Each run lives in its own JSON file
+under `showcase/data/runs/`, and `showcase/data/runs.json` is a lightweight
+index that the UI reads on load.
+
+After every prod run:
+
+```bash
+.venv/bin/mesocosm run export RUN_ID -o showcase/data/runs/RUN_ID.json
+python3 tools/index_runs.py
+git add showcase/data/runs/RUN_ID.json showcase/data/runs.json
+git commit -m "Add run RUN_ID"
+git push
+```
+
+The `Deploy showcase to GitHub Pages` workflow then publishes `showcase/` to
+GitHub Pages on push to `main`. Open:
+
+```text
+https://FWT-bs.github.io/wordle-env/
+```
+
+The Runs panel on the left lists every run in the index. The URL parameter
+`?run=RUN_ID` still works for direct deep links; if the run is not in the local
+index, the UI falls back to fetching it from the live API.
+
+To enable Pages, in the repo settings set `Pages → Build and deployment →
+Source` to `GitHub Actions`.
