@@ -9,11 +9,11 @@
     "description": "The agent receives Wordle-style feedback after each guess and must infer the hidden five-letter word.",
     "observation_space": {
       "type": "json",
-      "description": "Object with instructions, guesses_remaining, history, and answer only after the episode ends."
+      "description": "Object with instructions, candidate_words, max_guesses, guesses_remaining, history, and answer only after the episode ends."
     },
     "action_space": {
       "type": "json",
-      "schema_ref": "{\"type\":\"object\",\"properties\":{\"guess\":{\"type\":\"string\",\"description\":\"Exactly one five-letter lowercase word, for example crane.\",\"pattern\":\"^[a-zA-Z]{5}$\"}},\"required\":[\"guess\"],\"additionalProperties\":false}",
+      "schema_ref": "{\"type\":\"object\",\"properties\":{\"guess\":{\"type\":\"string\",\"description\":\"Exactly one five-letter word, for example crane.\"}},\"required\":[\"guess\"],\"additionalProperties\":false}",
       "description": "Submit an object like {\"guess\": \"crane\"}."
     },
     "reward": {

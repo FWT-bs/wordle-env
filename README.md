@@ -1,48 +1,40 @@
 # Wordle Env
 
-This is a standalone Mesocosm/Bench environment you can run locally.
+A standalone Mesocosm/Bench environment for a small Wordle-style task.
 
-## Files
+The agent gets six tries to guess a hidden five-letter word from a small
+candidate list. After every guess, the environment returns Wordle-style
+feedback:
 
-- `env.py`: the task logic. It defines hidden state, observations, actions, rewards, and termination.
-- `adapter.py`: the small HTTP server wrapper. It exposes `/health`, `/reset`, `/step`, `/close`, and optional `/render`.
-- `benchanything.json`: the manifest. It tells Mesocosm the observation space, action space, reward, episode limit, and scoring.
-- `requirements.txt`: optional extra dependencies. This example does not need any.
+- `green`: correct letter, correct position
+- `yellow`: correct letter, wrong position
+- `gray`: letter is not in the answer
 
-## Run The Env Server
+## Required Files
 
-I already created `wordle-env/.venv` in this checkout and installed the HTTP server dependencies there. From the repo root, this worked:
+These files should live at the root of the GitHub repo:
 
-```bash
-wordle-env/.venv/bin/python wordle-env/adapter.py --port 8765
-```
+- `env.py`: task logic. Defines hidden state, observations, actions, rewards, and termination.
+- `adapter.py`: starts the HTTP server that exposes `/health`, `/reset`, `/step`, `/close`, and optional `/render`.
+- `benchanything.json`: manifest for the binding vow, action space, reward, episode limit, and scoring.
+- `requirements.txt`: optional task dependencies. This example does not need any.
 
-To recreate that setup later:
+Do not commit `.venv/`, `data/`, or `__pycache__/`.
 
-```bash
-python3 -m venv wordle-env/.venv
-wordle-env/.venv/bin/python -m pip install swecc-mesocosm
-```
-
-If your active Python already has the dependencies installed, this also works from the repo root:
+## Local Setup
 
 ```bash
-python3 wordle-env/adapter.py --port 8765
+python3 -m venv .venv
+.venv/bin/python -m pip install swecc-mesocosm
 ```
 
-From inside this folder:
+## Run The Environment Server
 
 ```bash
-python3 adapter.py --port 8765
+.venv/bin/python adapter.py --port 8765
 ```
 
-If you move this folder outside the `swecc-core` repo, first install the CLI/package:
-
-```bash
-pip install swecc-mesocosm
-```
-
-## Test The HTTP Contract
+In another terminal, check the HTTP contract:
 
 ```bash
 curl -sS http://localhost:8765/health
@@ -62,20 +54,25 @@ curl -sS -X POST http://localhost:8765/close \
 
 ## Run A Local Bench
 
-Using the venv in this folder, open two terminals.
-
-Terminal 1:
+Start the adapter in terminal 1:
 
 ```bash
 .venv/bin/python adapter.py
 ```
 
-Terminal 2:
+Run a local Ollama bench in terminal 2:
 
 ```bash
 .venv/bin/mesocosm run local --model ollama/qwen2.5-coder:14b --episodes 1 --seeds 42
 ```
 
-`mesocosm run local` uses Ollama and does not submit anything to the hosted platform.
-You can swap the model for any local Ollama model you have pulled, such as
+Swap the model for any local Ollama model you have pulled, such as
 `ollama/llama3.2`.
+
+## Submit Through The UI
+
+Push this folder as its own public GitHub repo. The repo root should contain
+`benchanything.json`, `adapter.py`, `env.py`, and `requirements.txt`.
+
+Then open the Mesocosm UI, submit the GitHub repo URL as a developer
+environment, wait for it to become ready, and create a run from that environment.

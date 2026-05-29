@@ -1,23 +1,11 @@
 from __future__ import annotations
 
+import json
 import random
-import sys
-from pathlib import Path
+import re
 from typing import Any
 
-
-def _allow_running_from_swecc_core_checkout() -> None:
-    """Let this example run before swecc-mesocosm is installed locally."""
-    repo_common = Path(__file__).resolve().parents[1] / "services" / "bench" / "common"
-    if repo_common.exists():
-        sys.path.insert(0, str(repo_common))
-
-
-try:
-    from bench_common.env_sdk import BaseEnv, StepResult
-except ModuleNotFoundError:
-    _allow_running_from_swecc_core_checkout()
-    from bench_common.env_sdk import BaseEnv, StepResult
+from bench_common.env_sdk import BaseEnv, StepResult
 
 
 ANSWERS = [
@@ -67,10 +55,57 @@ class WordleEnv(BaseEnv):
         return self._observation()
 
     def parse_action(self, action: Any) -> str:
-        """Accept either {"guess": "crane"} or just "crane"."""
+        """Accept structured actions, raw words, or light model prose."""
         if isinstance(action, dict):
-            action = action.get("guess", "")
-        return str(action).strip().lower()
+            nested = action.get("action")
+            if isinstance(nested, dict):
+                action = nested.get("guess", "")
+            else:
+                action = action.get("guess", "")
+
+        text = str(action).strip()
+        parsed = self._parse_jsonish_action(text)
+        if parsed:
+            return parsed
+
+        exact = re.fullmatch(r"[a-zA-Z]{5}", text)
+        if exact:
+            return text.lower()
+
+        hinted = re.search(
+            r"\b(?:guess|answer|word)\s*(?:is|:|=)?\s*[\"']?([a-zA-Z]{5})[\"']?",
+            text,
+            flags=re.IGNORECASE,
+        )
+        if hinted:
+            return hinted.group(1).lower()
+
+        quoted = re.search(r"[\"']([a-zA-Z]{5})[\"']", text)
+        if quoted:
+            return quoted.group(1).lower()
+
+        skip = {
+            "guess",
+            "word",
+            "words",
+            "agent",
+            "could",
+            "would",
+            "there",
+            "their",
+            "after",
+            "green",
+            "yellow",
+            "gray",
+            "crane",
+        }
+        candidates = re.findall(r"\b[a-zA-Z]{5}\b", text)
+        for candidate in reversed(candidates):
+            lowered = candidate.lower()
+            if lowered not in skip:
+                return lowered
+
+        return text.lower()
 
     def step(self, action: Any) -> StepResult:
         if self._secret is None:
@@ -94,7 +129,7 @@ class WordleEnv(BaseEnv):
                 reward=0.0,
                 terminated=out_of_guesses,
                 truncated=False,
-                info=self._info(won=False),
+                info=self._info(won=False, done=out_of_guesses, guess=guess, valid=False),
             )
 
         feedback = self._score_guess(guess, self._secret)
@@ -117,7 +152,7 @@ class WordleEnv(BaseEnv):
             reward=1.0 if won else 0.0,
             terminated=done,
             truncated=False,
-            info=self._info(won=won),
+            info=self._info(won=won, done=done, guess=guess, valid=True),
         )
 
     def render(self, mode: str = "text") -> str:
@@ -134,9 +169,11 @@ class WordleEnv(BaseEnv):
     def _observation(self, *, reveal_answer: bool = False) -> dict[str, Any]:
         obs: dict[str, Any] = {
             "instructions": (
-                "Guess the hidden five-letter word. Submit an action like "
-                "{\"guess\": \"crane\"}."
+                "Guess the hidden five-letter word. The answer is one of "
+                "candidate_words. Submit an action like {\"guess\": \"crane\"}."
             ),
+            "candidate_words": ANSWERS,
+            "max_guesses": self._max_guesses,
             "guesses_remaining": max(0, self._max_guesses - self._guesses_used),
             "history": self._history,
         }
@@ -144,12 +181,40 @@ class WordleEnv(BaseEnv):
             obs["answer"] = self._secret
         return obs
 
-    def _info(self, *, won: bool) -> dict[str, str]:
+    def _info(self, *, won: bool, done: bool, guess: str, valid: bool) -> dict[str, str]:
         return {
             "won": "1.0" if won else "0.0",
             "guesses_used": str(self._guesses_used),
-            "answer": self._secret or "",
+            "guess": guess,
+            "valid": "1.0" if valid else "0.0",
+            "answer": self._secret if done and self._secret is not None else "",
         }
+
+    @staticmethod
+    def _parse_jsonish_action(text: str) -> str | None:
+        stripped = text.strip()
+        for fence in ("```json", "```"):
+            if stripped.startswith(fence):
+                stripped = stripped.removeprefix(fence).strip()
+                if stripped.endswith("```"):
+                    stripped = stripped[:-3].strip()
+
+        for candidate in (stripped,):
+            try:
+                payload = json.loads(candidate)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(payload, dict):
+                if isinstance(payload.get("guess"), str):
+                    return payload["guess"].strip().lower()
+                action = payload.get("action")
+                if isinstance(action, dict) and isinstance(action.get("guess"), str):
+                    return action["guess"].strip().lower()
+
+        match = re.search(r'"guess"\s*:\s*"([a-zA-Z]{5})"', text)
+        if match:
+            return match.group(1).lower()
+        return None
 
     @staticmethod
     def _is_valid_guess(guess: str) -> bool:

@@ -1,23 +1,8 @@
 from __future__ import annotations
 
 import argparse
-import sys
-from pathlib import Path
 
-
-def _allow_running_from_swecc_core_checkout() -> None:
-    """Let this example run before swecc-mesocosm is installed locally."""
-    repo_common = Path(__file__).resolve().parents[1] / "services" / "bench" / "common"
-    if repo_common.exists():
-        sys.path.insert(0, str(repo_common))
-
-
-try:
-    from bench_common.env_sdk import serve
-except ModuleNotFoundError:
-    _allow_running_from_swecc_core_checkout()
-    from bench_common.env_sdk import serve
-
+from bench_common.env_sdk import serve
 from env import WordleEnv
 
 

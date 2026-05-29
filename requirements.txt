@@ -1,2 +1,5 @@
-# Optional environment dependencies go here.
-# The default Wordle example only uses the Python standard library.
+# Optional environment-only dependencies go here.
+#
+# This example only uses the Python standard library for task logic.
+# For local development, install the Mesocosm CLI/runtime separately:
+#   pip install swecc-mesocosm
