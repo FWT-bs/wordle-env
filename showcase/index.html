@@ -18,6 +18,7 @@
       --gray: #4e5a53;
       --empty: #1a3329;
       --ink-on-yellow: #20190d;
+      --bad: #e07879;
     }
 
     * { box-sizing: border-box; }
@@ -29,11 +30,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    main {
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
+    a { color: #9fd6ad; }
 
     header {
       border-bottom: 1px solid var(--line);
@@ -41,254 +38,23 @@
     }
 
     .header-inner {
-      width: min(1180px, calc(100vw - 32px));
+      width: min(1240px, calc(100vw - 32px));
       margin: 0 auto;
-      padding: 18px 0;
+      padding: 16px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: 0;
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .shell {
-      width: min(1180px, calc(100vw - 32px));
-      margin: 0 auto;
-      padding: 24px 0;
-      display: grid;
-      grid-template-columns: 260px minmax(330px, 450px) 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .runs-panel {
-      max-height: calc(100vh - 140px);
-      overflow: auto;
-      position: sticky;
-      top: 18px;
-    }
-
-    .runs-list {
-      display: grid;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .run-item {
-      text-align: left;
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 10px;
-      cursor: pointer;
-      color: var(--text);
-      display: grid;
-      gap: 4px;
-      height: auto;
-      font-weight: 500;
-    }
-
-    .run-item.active {
-      border-color: #d8ead8;
-      background: #16332a;
-    }
-
-    .run-item .id {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .run-item .model {
-      font-size: 13px;
-      font-weight: 700;
-      overflow-wrap: anywhere;
-    }
-
-    .run-item .row {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 12px;
-      grid-template-columns: none;
-      gap: 6px;
-    }
-
-    .run-item .status {
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 0.04em;
-    }
-
-    .run-item .status.good { color: var(--green); }
-    .run-item .status.bad { color: #e07879; }
-    .run-item .status.live { color: var(--yellow); }
-
-    .runs-empty {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 18px;
-    }
-
-    .title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 16px;
-      letter-spacing: 0;
-    }
-
-    .board {
-      display: grid;
-      gap: 8px;
-      margin: 14px 0 18px;
-    }
-
-    .row {
-      display: grid;
-      grid-template-columns: repeat(5, 58px);
-      gap: 8px;
-    }
-
-    .tile {
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--empty);
-      font-weight: 800;
-      font-size: 28px;
-      text-transform: uppercase;
-    }
-
-    .tile.green { background: var(--green); border-color: var(--green); }
-    .tile.yellow { background: var(--yellow); border-color: var(--yellow); color: var(--ink-on-yellow); }
-    .tile.gray { background: var(--gray); border-color: var(--gray); }
-
-    .timeline {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .step {
-      min-width: 42px;
-      height: 38px;
-      border-radius: 6px;
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--text);
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .step.active {
-      background: #d8ead8;
-      color: #10241c;
-      border-color: #d8ead8;
-    }
-
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .fact {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 10px;
-    }
-
-    .fact .label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 4px;
-    }
-
-    .fact .value {
-      font-size: 16px;
-      font-weight: 800;
-      overflow-wrap: anywhere;
-    }
-
-    .detail-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    .block {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 14px;
-    }
-
-    .block h3 {
-      margin: 0 0 8px;
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .reasoning {
-      white-space: pre-wrap;
-      line-height: 1.55;
-      margin: 0;
-      color: #dce8dd;
-    }
-
-    .words {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .word {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 5px 9px;
-      color: var(--muted);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 13px;
-    }
-
-    .toolbar {
-      display: flex;
-      gap: 8px;
-      align-items: center;
       flex-wrap: wrap;
     }
+
+    h1 { margin: 0; font-size: 22px; }
+    .sub { color: var(--muted); font-size: 14px; margin-top: 3px; }
+
+    .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 
     input, select {
-      height: 38px;
+      height: 36px;
       border-radius: 6px;
       border: 1px solid var(--line);
       background: #081511;
@@ -296,14 +62,10 @@
       padding: 0 10px;
       min-width: 0;
     }
-
-    input[type="file"] {
-      max-width: 230px;
-      padding-top: 8px;
-    }
+    input[type="file"] { max-width: 210px; padding-top: 7px; font-size: 12px; }
 
     button {
-      height: 38px;
+      height: 36px;
       border: 1px solid var(--line);
       border-radius: 6px;
       background: #d8ead8;
@@ -312,116 +74,194 @@
       padding: 0 12px;
       cursor: pointer;
     }
+    button.secondary { background: transparent; color: var(--text); }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    button.secondary {
-      background: transparent;
-      color: var(--text);
+    .shell {
+      width: min(1240px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 22px 0;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 22px;
+      align-items: start;
     }
 
-    .message {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 10px;
-      min-height: 18px;
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
     }
 
-    @media (max-width: 860px) {
-      .header-inner {
-        display: grid;
-      }
+    .runs-panel { position: sticky; top: 16px; max-height: calc(100vh - 120px); overflow: auto; }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+    h2 { margin: 0; font-size: 15px; }
+    h3 { margin: 0 0 10px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
 
-      .shell {
-        grid-template-columns: 1fr;
-      }
+    .runs-list { display: grid; gap: 8px; }
+    .run-item {
+      text-align: left; background: var(--surface-2); border: 1px solid var(--line);
+      border-radius: 8px; padding: 10px; cursor: pointer; color: var(--text);
+      display: grid; gap: 4px; height: auto; font-weight: 500;
+    }
+    .run-item.active { border-color: #d8ead8; background: #16332a; }
+    .run-item .model { font-size: 13px; font-weight: 800; overflow-wrap: anywhere; }
+    .run-item .id { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--muted); }
+    .run-item .row { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+    .run-item .status { text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em; }
+    .status.good { color: var(--green); } .status.bad { color: var(--bad); } .status.live { color: var(--yellow); }
+    .runs-empty { color: var(--muted); font-size: 13px; }
 
-      .runs-panel {
-        position: static;
-        max-height: none;
-      }
+    .main { display: grid; gap: 18px; }
 
-      .row {
-        grid-template-columns: repeat(5, minmax(44px, 1fr));
-      }
+    /* Run stats strip */
+    .stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .stat { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+    .stat .k { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .stat .v { font-size: 18px; font-weight: 800; margin-top: 3px; overflow-wrap: anywhere; }
+    .pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 800; border: 1px solid var(--line); }
+    .pill.good { background: rgba(90,164,105,0.18); color: #9fe0ad; border-color: var(--green); }
+    .pill.bad { background: rgba(224,120,121,0.16); color: #f0a6a6; border-color: var(--bad); }
+    .pill.live { background: rgba(201,166,77,0.16); color: #e8cf8c; border-color: var(--yellow); }
 
-      .tile {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1;
-      }
+    /* Episodes */
+    .episodes { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ep {
+      text-align: left; background: var(--surface-2); border: 1px solid var(--line);
+      border-radius: 8px; padding: 8px 11px; cursor: pointer; color: var(--text);
+      display: grid; gap: 2px; min-width: 132px;
+    }
+    .ep.active { border-color: #d8ead8; background: #16332a; }
+    .ep .epname { font-size: 12px; color: var(--muted); }
+    .ep .epout { font-size: 14px; font-weight: 800; display: flex; align-items: center; gap: 6px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; background: var(--gray); }
+    .dot.good { background: var(--green); } .dot.bad { background: var(--bad); }
+    .ans { font-family: ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.06em; }
 
-      .facts {
-        grid-template-columns: 1fr;
-      }
+    /* Play area */
+    .play { display: grid; grid-template-columns: minmax(320px, 1.1fr) 1fr; gap: 18px; }
+    .controls { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .controls .steplabel { font-weight: 800; font-size: 14px; min-width: 96px; }
+    .timeline { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+    .step { min-width: 34px; height: 32px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; font-weight: 800; padding: 0 6px; }
+    .step.active { background: #d8ead8; color: #10241c; border-color: #d8ead8; }
+    .step.win.active { background: var(--green); border-color: var(--green); color: #fff; }
+
+    .board { display: grid; gap: 8px; margin: 4px 0 10px; }
+    .brow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .brow.active .tile { box-shadow: 0 0 0 2px #d8ead8; }
+    .tile {
+      aspect-ratio: 1; max-width: 62px; display: grid; place-items: center;
+      border: 1px solid var(--line); border-radius: 6px; background: var(--empty);
+      font-weight: 800; font-size: 26px; text-transform: uppercase;
+    }
+    .tile.green { background: var(--green); border-color: var(--green); }
+    .tile.yellow { background: var(--yellow); border-color: var(--yellow); color: var(--ink-on-yellow); }
+    .tile.gray { background: var(--gray); border-color: var(--gray); }
+
+    .caption { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+    .caption b { color: #fff; }
+
+    .outcome { display: grid; gap: 12px; }
+    .answer-card { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+    .answer-card .big { font-size: 30px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; font-family: ui-monospace, Menlo, monospace; margin-top: 4px; }
+    .answer-card.win { border-color: var(--green); }
+    .answer-card.loss { border-color: var(--bad); }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .facts .k { color: var(--muted); font-size: 11px; text-transform: uppercase; }
+    .facts .v { font-weight: 800; }
+
+    .words { display: flex; flex-wrap: wrap; gap: 6px; }
+    .word { border: 1px solid var(--line); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+    .word.answer { color: #10241c; background: var(--green); border-color: var(--green); font-weight: 800; }
+
+    .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+    .swatch.green { background: var(--green); } .swatch.yellow { background: var(--yellow); } .swatch.gray { background: var(--gray); }
+
+    .message { color: var(--muted); font-size: 13px; min-height: 18px; }
+    .notice { color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .shell { grid-template-columns: 1fr; }
+      .runs-panel { position: static; max-height: none; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .play { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <div class="header-inner">
-        <div>
-          <h1>Wordle Bench Showcase</h1>
-          <div class="meta" id="run-meta">Loading replay...</div>
-        </div>
+  <header>
+    <div class="header-inner">
+      <div>
+        <h1>Wordle Bench Showcase</h1>
+        <div class="sub" id="run-sub">Loading runs...</div>
+      </div>
+      <div class="toolbar">
+        <input id="run-id" placeholder="run id" size="14" />
+        <button id="load-run">Load</button>
+        <input id="file" type="file" accept="application/json,.json" />
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <section class="panel runs-panel">
+      <div class="panel-head">
+        <h2>Runs</h2>
         <div class="toolbar">
-          <select id="episode-select" aria-label="Episode"></select>
-          <input id="run-id" placeholder="run id" />
-          <button id="load-run">Load</button>
-          <input id="file" type="file" accept="application/json,.json" />
+          <button id="fetch-recent" class="secondary" title="Fetch recent runs from the API">Fetch</button>
+          <button id="refresh-runs" class="secondary" title="Reload runs.json">↻</button>
         </div>
       </div>
-    </header>
+      <div class="runs-list" id="runs-list"><p class="runs-empty">Loading run index...</p></div>
+    </section>
 
-    <div class="shell">
-      <section class="panel runs-panel">
-        <div class="title-row">
-          <h2>Runs</h2>
-          <div class="toolbar">
-            <button id="fetch-recent" title="Fetch recent runs from the API">Fetch recent</button>
-            <button id="refresh-runs" class="secondary" title="Reload local runs.json">Refresh</button>
-          </div>
-        </div>
-        <div class="runs-list" id="runs-list">
-          <p class="runs-empty">Loading run index...</p>
-        </div>
+    <main class="main">
+      <section class="stats" id="stats"></section>
+
+      <section class="panel">
+        <h3>Episodes</h3>
+        <div class="episodes" id="episodes"></div>
       </section>
 
       <section class="panel">
-        <div class="title-row">
-          <h2 id="episode-title">Episode</h2>
-          <div class="meta" id="turn-label"></div>
-        </div>
-        <div class="board" id="board"></div>
-        <div class="timeline" id="timeline"></div>
-        <div class="facts">
-          <div class="fact">
-            <div class="label">Action</div>
-            <div class="value" id="action">-</div>
+        <div class="play">
+          <div>
+            <div class="controls">
+              <button id="prev" class="secondary" title="Previous guess (←)">◀</button>
+              <button id="play" title="Replay from start (space)">▶ Play</button>
+              <button id="next" class="secondary" title="Next guess (→)">▶</button>
+              <span class="steplabel" id="steplabel">Step 0 / 0</span>
+              <div class="timeline" id="timeline"></div>
+            </div>
+            <div class="board" id="board"></div>
+            <div class="caption" id="caption"></div>
           </div>
-          <div class="fact">
-            <div class="label">Reward</div>
-            <div class="value" id="reward">-</div>
-          </div>
-          <div class="fact">
-            <div class="label">Result</div>
-            <div class="value" id="result">-</div>
-          </div>
-        </div>
-        <div class="message" id="message"></div>
-      </section>
 
-      <section class="detail-grid">
-        <div class="block">
-          <h3>Agent Reasoning</h3>
-          <p class="reasoning" id="reasoning"></p>
+          <div class="outcome">
+            <div class="answer-card" id="answer-card">
+              <h3 style="margin-bottom:2px">Answer</h3>
+              <div class="big" id="answer">—</div>
+              <div class="facts" id="ep-facts"></div>
+            </div>
+            <div>
+              <h3>Candidate Words</h3>
+              <div class="words" id="words"></div>
+            </div>
+            <div class="legend">
+              <span><i class="swatch green"></i> right spot</span>
+              <span><i class="swatch yellow"></i> wrong spot</span>
+              <span><i class="swatch gray"></i> not in word</span>
+            </div>
+          </div>
         </div>
-        <div class="block">
-          <h3>Candidate Words</h3>
-          <div class="words" id="words"></div>
-        </div>
+        <div class="message" id="message" style="margin-top:12px"></div>
       </section>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <script>
     const API_BASE = "https://api.swecc.org/bench";
@@ -430,395 +270,278 @@
     const DEFAULT_DOMAIN_ID = "85ec56ce-8e26-40d9-bfbb-879097f8d958"; // Wordle (FWT-bs/wordle-env prod domain)
     const RECENT_LIMIT = 20;
 
-    const state = {
-      data: null,
-      episodeId: null,
-      turnIndex: 0,
-      index: [],
-      activeRunId: null,
-    };
+    const state = { data: null, index: [], activeRunId: null, episodeId: null, stepIndex: 0, playing: false, timer: null };
+    const $ = (id) => document.getElementById(id);
 
-    const els = {
-      runMeta: document.querySelector("#run-meta"),
-      episodeSelect: document.querySelector("#episode-select"),
-      episodeTitle: document.querySelector("#episode-title"),
-      turnLabel: document.querySelector("#turn-label"),
-      board: document.querySelector("#board"),
-      timeline: document.querySelector("#timeline"),
-      action: document.querySelector("#action"),
-      reward: document.querySelector("#reward"),
-      result: document.querySelector("#result"),
-      reasoning: document.querySelector("#reasoning"),
-      words: document.querySelector("#words"),
-      message: document.querySelector("#message"),
-      runId: document.querySelector("#run-id"),
-      loadRun: document.querySelector("#load-run"),
-      file: document.querySelector("#file"),
-      runsList: document.querySelector("#runs-list"),
-      refreshRuns: document.querySelector("#refresh-runs"),
-      fetchRecent: document.querySelector("#fetch-recent"),
-    };
+    /* ---------- helpers ---------- */
+    const shortId = (id) => String(id || "").slice(0, 8);
+    const escapeHtml = (v) => String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+    const statusTone = (s) => (s === "completed" ? "good" : s === "failed" || s === "cancelled" ? "bad" : s === "running" ? "live" : "");
+    const fmtScore = (v) => (typeof v === "number" ? (Number.isInteger(v) ? String(v) : v.toFixed(3)) : v == null ? "—" : String(v));
+    const isWon = (ti) => ti && (ti.won === "1.0" || ti.won === 1 || ti.won === true || ti.won === "1");
+    const setMessage = (t) => { $("message").textContent = t || ""; };
 
-    function getDomainIdFromUrl() {
-      return new URLSearchParams(window.location.search).get("domain") || DEFAULT_DOMAIN_ID;
-    }
+    /* ---------- run index / loading (unchanged behaviour) ---------- */
+    function getParam(name) { return new URLSearchParams(window.location.search).get(name); }
 
     function normalizeApiRun(run) {
       return {
         id: run.id,
         domain: run.config?.domain_id === DEFAULT_DOMAIN_ID ? "Wordle" : run.config?.domain_id,
-        model: run.config?.agent_config?.model,
-        status: run.status,
-        scores: run.scores || {},
-        episodes: run.config?.num_episodes,
-        created_at: run.created_at,
-        completed_at: run.completed_at,
-        source: "api",
+        model: run.config?.agent_config?.model, status: run.status,
+        scores: run.scores || {}, episodes: run.config?.num_episodes,
+        created_at: run.created_at, source: "api",
       };
     }
-
-    async function fetchRecentRuns() {
-      const domainId = getDomainIdFromUrl();
-      setMessage(`Fetching recent runs for domain ${shortId(domainId)}...`);
-      const url = `${API_BASE}/v1/runs?domain_id=${encodeURIComponent(domainId)}`;
-      const response = await fetch(url, { credentials: "omit" });
-      if (!response.ok) {
-        throw new Error(`API returned ${response.status} ${response.statusText}`);
-      }
-      const runs = await response.json();
-      if (!Array.isArray(runs)) {
-        throw new Error("Unexpected response shape from /v1/runs.");
-      }
-      const normalized = runs
-        .map(normalizeApiRun)
-        .filter((r) => r.id)
-        .sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""))
-        .slice(0, RECENT_LIMIT);
-      state.index = mergeIndex(state.index, normalized);
-      renderRunsList();
-      setMessage(`Loaded ${normalized.length} recent run(s) from the API.`);
-    }
-
     function mergeIndex(existing, fetched) {
       const byId = new Map();
-      for (const entry of existing) byId.set(entry.id, entry);
-      for (const entry of fetched) {
-        const prev = byId.get(entry.id) || {};
-        byId.set(entry.id, { ...entry, ...prev, ...entry, file: prev.file });
-      }
-      return Array.from(byId.values()).sort(
-        (a, b) => (b.created_at || "").localeCompare(a.created_at || "")
-      );
+      for (const e of existing) byId.set(e.id, e);
+      for (const e of fetched) { const prev = byId.get(e.id) || {}; byId.set(e.id, { ...e, ...prev, ...e, file: prev.file }); }
+      return Array.from(byId.values()).sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""));
     }
-
-    function getRunIdFromUrl() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("run") || "";
+    async function fetchRecentRuns() {
+      const domainId = getParam("domain") || DEFAULT_DOMAIN_ID;
+      setMessage(`Fetching recent runs for ${shortId(domainId)}...`);
+      const r = await fetch(`${API_BASE}/v1/runs?domain_id=${encodeURIComponent(domainId)}`, { credentials: "omit" });
+      if (!r.ok) throw new Error(`API returned ${r.status}`);
+      const runs = await r.json();
+      if (!Array.isArray(runs)) throw new Error("Unexpected /v1/runs shape.");
+      state.index = mergeIndex(state.index, runs.map(normalizeApiRun).filter((x) => x.id).slice(0, RECENT_LIMIT));
+      renderRunsList();
+      setMessage(`Loaded ${Math.min(runs.length, RECENT_LIMIT)} run(s) from the API.`);
     }
-
     async function loadIndex() {
       try {
-        const response = await fetch(RUNS_INDEX_PATH, { cache: "no-store" });
-        if (!response.ok) {
-          state.index = [];
-          renderRunsList();
-          return [];
-        }
-        const payload = await response.json();
+        const r = await fetch(RUNS_INDEX_PATH, { cache: "no-store" });
+        if (!r.ok) { state.index = []; renderRunsList(); return []; }
+        const payload = await r.json();
         state.index = Array.isArray(payload.runs) ? payload.runs : [];
-        renderRunsList();
-        return state.index;
-      } catch (error) {
-        state.index = [];
-        renderRunsList();
-        return [];
-      }
-    }
-
-    async function loadInitial() {
-      const indexEntries = await loadIndex();
-      const runId = getRunIdFromUrl();
-      if (runId) {
-        els.runId.value = runId;
-        await loadRun(runId);
-        return;
-      }
-      if (indexEntries.length > 0) {
-        await loadRun(indexEntries[0].id);
-        return;
-      }
-      await loadFromPath(SAMPLE_PATH);
-    }
-
-    async function loadRun(runId) {
-      setMessage("Loading run export...");
-      state.activeRunId = runId;
+      } catch { state.index = []; }
       renderRunsList();
+      return state.index;
+    }
+    async function loadInitial() {
+      const entries = await loadIndex();
+      const runId = getParam("run");
+      if (runId) { $("run-id").value = runId; return loadRun(runId); }
+      if (entries.length) return loadRun(entries[0].id);
+      return loadFromPath(SAMPLE_PATH);
+    }
+    async function loadRun(runId) {
+      if (!runId) return;
+      setMessage("Loading run export...");
+      state.activeRunId = runId; renderRunsList();
       const entry = state.index.find((r) => r.id === runId);
       if (entry?.file) {
-        const localPath = `data/${entry.file}`;
         try {
-          const response = await fetch(localPath, { cache: "no-store" });
-          if (response.ok) {
-            const data = await response.json();
-            setReplay(data, `Loaded ${runId} from showcase.`);
-            return;
-          }
-        } catch (error) {
-          // fall through to API
-        }
+          const r = await fetch(`data/${entry.file}`, { cache: "no-store" });
+          if (r.ok) return setReplay(await r.json(), `Loaded ${shortId(runId)} from showcase.`);
+        } catch { /* fall through */ }
       }
-      const response = await fetch(`${API_BASE}/v1/runs/${encodeURIComponent(runId)}/export`);
-      if (!response.ok) {
-        throw new Error(`Could not fetch run export (${response.status}).`);
-      }
-      const data = await response.json();
-      setReplay(data, `Loaded run ${runId} from API.`);
+      const r = await fetch(`${API_BASE}/v1/runs/${encodeURIComponent(runId)}/export`);
+      if (!r.ok) throw new Error(`Could not fetch run export (${r.status}).`);
+      setReplay(await r.json(), `Loaded ${shortId(runId)} from API.`);
     }
-
     async function loadFromPath(path) {
-      const response = await fetch(path, { cache: "no-store" });
-      if (!response.ok) {
-        throw new Error(`Could not load ${path}.`);
-      }
-      const data = await response.json();
-      setReplay(data, "Loaded local replay data.");
+      const r = await fetch(path, { cache: "no-store" });
+      if (!r.ok) throw new Error(`Could not load ${path}.`);
+      setReplay(await r.json(), "Loaded local replay data.");
     }
 
+    /* ---------- derived accessors ---------- */
+    const episodeRecords = () => state.data?.episodes || [];
+    const replayMap = () => state.data?.replay || {};
+    const turnsFor = (eid) => replayMap()[eid] || [];
+    const currentTurns = () => turnsFor(state.episodeId);
+    const currentEpisodeRecord = () => episodeRecords().find((e) => e.id === state.episodeId) || null;
+    const boardOf = (turn) => turn?.board_after || turn?.observation || turn?.board_before || {};
+
+    function setReplay(data, message) {
+      state.data = data;
+      stopPlay();
+      const ids = Object.keys(data.replay || {});
+      // default to the first episode, shown at its FINAL step (full board visible).
+      selectEpisode(ids[0] || null, /*toEnd*/ true, /*render*/ false);
+      renderRunsList();
+      renderStats();
+      renderEpisodes();
+      render();
+      setMessage(message);
+      const run = data.run || {};
+      const model = run.config?.agent_config?.model || "unknown model";
+      const wr = (run.scores || run.aggregate_scores || {}).win_rate;
+      $("run-sub").textContent = `${data.domain_name || "Wordle"} · ${model}` + (wr != null ? ` · win rate ${fmtScore(wr)}` : "");
+    }
+
+    function selectEpisode(eid, toEnd, doRender = true) {
+      state.episodeId = eid;
+      const n = turnsFor(eid).length;
+      state.stepIndex = toEnd ? Math.max(0, n - 1) : 0;
+      if (doRender) { renderEpisodes(); render(); }
+    }
+
+    /* ---------- rendering ---------- */
     function renderRunsList() {
-      if (!state.index.length) {
-        els.runsList.innerHTML = `<p class="runs-empty">No runs in <code>data/runs.json</code>. Drop exports into <code>data/runs/</code> and run the indexer.</p>`;
-        return;
-      }
-      els.runsList.innerHTML = state.index.map((entry) => {
-        const active = entry.id === state.activeRunId ? " active" : "";
-        const status = entry.status || "unknown";
-        const statusClass = statusTone(status);
-        const score = entry.scores?.win_rate ?? entry.scores?.average_reward;
-        const scoreText = score === undefined ? "" : `score ${formatScore(score)}`;
-        return `<button class="run-item${active}" data-run-id="${escapeHtml(entry.id)}">
-          <span class="model">${escapeHtml(entry.model || "unknown model")}</span>
-          <span class="id">${escapeHtml(shortId(entry.id))} · ${escapeHtml(entry.domain || "")}</span>
-          <span class="row">
-            <span class="status ${statusClass}">${escapeHtml(status)}</span>
-            <span>${escapeHtml(scoreText)}</span>
-          </span>
+      if (!state.index.length) { $("runs-list").innerHTML = `<p class="runs-empty">No runs in <code>data/runs.json</code>.</p>`; return; }
+      $("runs-list").innerHTML = state.index.map((e) => {
+        const active = e.id === state.activeRunId ? " active" : "";
+        const s = e.status || "unknown";
+        const score = e.scores?.win_rate ?? e.scores?.average_reward;
+        return `<button class="run-item${active}" data-run-id="${escapeHtml(e.id)}">
+          <span class="model">${escapeHtml(e.model || "unknown model")}</span>
+          <span class="id">${escapeHtml(shortId(e.id))} · ${escapeHtml(String(e.episodes ?? "?"))} eps</span>
+          <span class="row"><span class="status ${statusTone(s)}">${escapeHtml(s)}</span><span>${score == null ? "" : "win " + fmtScore(score)}</span></span>
         </button>`;
       }).join("");
     }
 
-    function statusTone(status) {
-      if (status === "completed") return "good";
-      if (status === "failed" || status === "cancelled") return "bad";
-      if (status === "running") return "live";
-      return "";
+    function renderStats() {
+      const run = state.data?.run || {};
+      const eps = episodeRecords();
+      const scores = run.scores || run.aggregate_scores || {};
+      const won = eps.filter((e) => isWon(e.terminal_info)).length;
+      const stepsArr = eps.map((e) => Number(e.steps)).filter((n) => !isNaN(n));
+      const avg = stepsArr.length ? (stepsArr.reduce((a, b) => a + b, 0) / stepsArr.length) : null;
+      const tokens = eps.reduce((a, e) => a + (Number(e.terminal_info?.total_tokens) || 0), 0);
+      const cells = [
+        ["Model", escapeHtml(run.config?.agent_config?.model || "—")],
+        ["Status", `<span class="pill ${statusTone(run.status)}">${escapeHtml(run.status || "—")}</span>`],
+        ["Episodes", `${won}/${eps.length} won`],
+        ["Win rate", fmtScore(scores.win_rate)],
+        ["Avg guesses", avg == null ? "—" : avg.toFixed(1)],
+        ["Tokens", tokens ? tokens.toLocaleString() : "—"],
+      ];
+      $("stats").innerHTML = cells.map(([k, v]) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
     }
 
-    function formatScore(value) {
-      if (typeof value === "number") {
-        return Number.isInteger(value) ? String(value) : value.toFixed(3);
-      }
-      return String(value);
-    }
-
-    function setReplay(data, message) {
-      state.data = data;
-      const episodeIds = Object.keys(data.replay || {});
-      state.episodeId = episodeIds[0] || null;
-      state.turnIndex = 0;
-
-      els.episodeSelect.innerHTML = episodeIds
-        .map((id, index) => `<option value="${id}">Episode ${index + 1}</option>`)
-        .join("");
-
-      const run = data.run || {};
-      const model = run.config?.agent_config?.model || firstTurn()?.model || "unknown model";
-      const domain = data.domain_name || data.domain_id || "Wordle";
-      const score = run.aggregate_scores?.win_rate;
-      els.runMeta.textContent = `${domain} · ${model}${score !== undefined ? ` · win rate ${score}` : ""}`;
-      setMessage(message);
-      render();
-    }
-
-    function turns() {
-      if (!state.data || !state.episodeId) return [];
-      return state.data.replay[state.episodeId] || [];
-    }
-
-    function firstTurn() {
-      const replay = state.data?.replay || {};
-      const firstEpisode = Object.keys(replay)[0];
-      return firstEpisode ? replay[firstEpisode][0] : null;
-    }
-
-    function selectedTurn() {
-      const list = turns();
-      return list[Math.min(state.turnIndex, Math.max(0, list.length - 1))] || null;
-    }
-
-    function selectedEpisode() {
-      return (state.data?.episodes || []).find((episode) => episode.id === state.episodeId);
-    }
-
-    function bestObservation(turn) {
-      return turn?.board_after || turn?.observation || turn?.board_before || {};
+    function renderEpisodes() {
+      const eps = episodeRecords();
+      if (!eps.length) { $("episodes").innerHTML = `<p class="notice">No episodes in this run.</p>`; return; }
+      $("episodes").innerHTML = eps.map((e, i) => {
+        const ti = e.terminal_info || {};
+        const won = isWon(ti);
+        const active = e.id === state.episodeId ? " active" : "";
+        const failed = e.status === "failed";
+        const outcome = failed ? "failed" : won ? `solved in ${ti.guesses_used ?? e.steps}` : "lost";
+        const ans = ti.answer ? `<span class="ans">${escapeHtml(ti.answer)}</span>` : "";
+        return `<button class="ep${active}" data-ep="${escapeHtml(e.id)}">
+          <span class="epname">Episode ${i + 1}</span>
+          <span class="epout"><span class="dot ${failed ? "bad" : won ? "good" : "bad"}"></span>${ans || escapeHtml(outcome)}</span>
+          <span class="epname">${escapeHtml(outcome)}</span>
+        </button>`;
+      }).join("");
     }
 
     function render() {
-      const list = turns();
-      const turn = selectedTurn();
-      const episode = selectedEpisode();
+      const turns = currentTurns();
+      const ep = currentEpisodeRecord();
+      const ti = ep?.terminal_info || {};
+      const n = turns.length;
+      if (state.stepIndex > n - 1) state.stepIndex = Math.max(0, n - 1);
+      const turn = turns[state.stepIndex] || null;
 
-      els.episodeTitle.textContent = episode ? `Episode ${shortId(episode.id)}` : "Episode";
-      els.turnLabel.textContent = turn ? `Step ${turn.step} of ${list.length}` : "";
-
-      renderTimeline(list);
-      renderBoard(bestObservation(turn));
-      renderDetails(turn, episode);
-    }
-
-    function renderTimeline(list) {
-      els.timeline.innerHTML = list.map((turn, index) => {
-        const active = index === state.turnIndex ? " active" : "";
-        return `<button class="step${active}" data-step="${index}">${turn.step}</button>`;
+      // step controls
+      $("steplabel").textContent = n ? `Step ${state.stepIndex + 1} / ${n}` : "No steps";
+      $("prev").disabled = state.stepIndex <= 0;
+      $("next").disabled = state.stepIndex >= n - 1;
+      $("timeline").innerHTML = turns.map((t, i) => {
+        const win = isWon(t.info) || (i === n - 1 && isWon(ti));
+        return `<button class="step${i === state.stepIndex ? " active" : ""}${win ? " win" : ""}" data-step="${i}">${t.step ?? i + 1}</button>`;
       }).join("");
+
+      renderBoard(boardOf(turn), state.stepIndex, ti.answer);
+      renderCaption(turn, state.stepIndex, n, ti);
+      renderOutcome(ep, ti);
+
+      const obs = boardOf(turn);
+      $("words").innerHTML = (obs.candidate_words || []).map((w) =>
+        `<span class="word${ti.answer && w.toLowerCase() === String(ti.answer).toLowerCase() ? " answer" : ""}">${escapeHtml(w)}</span>`).join("");
     }
 
-    function renderBoard(observation) {
-      const maxGuesses = observation.max_guesses || 6;
-      const rows = (observation.history || []).map((row) => {
-        if (!row.valid) {
-          return { valid: false, guess: row.guess || "", tiles: [] };
-        }
-        return { valid: true, tiles: row.feedback || row.tiles || [] };
+    function renderBoard(obs, activeRow, answer) {
+      const maxGuesses = obs.max_guesses || 6;
+      const hist = obs.history || [];
+      const rows = hist.map((row) => {
+        if (row.valid === false) return { invalid: true, guess: row.guess || "", tiles: [] };
+        return { invalid: false, tiles: row.feedback || row.tiles || [] };
       });
+      while (rows.length < maxGuesses) rows.push({ empty: true, tiles: Array.from({ length: 5 }, () => ({ letter: "", mark: "empty" })) });
 
-      while (rows.length < maxGuesses) {
-        rows.push({
-          valid: true,
-          tiles: Array.from({ length: 5 }, () => ({ letter: "", mark: "empty" })),
-        });
-      }
-
-      els.board.innerHTML = rows.map((row) => {
-        const tiles = row.valid
-          ? row.tiles
-          : Array.from({ length: 5 }, (_, i) => ({
-              letter: (row.guess || "")[i] || "",
-              mark: "gray",
-            }));
-        return `<div class="row">${tiles.map((tile) => {
-          const cls = tile.mark || "empty";
-          const letter = escapeHtml(tile.letter || "");
-          return `<div class="tile ${cls}">${letter}</div>`;
-        }).join("")}</div>`;
+      $("board").innerHTML = rows.map((row, idx) => {
+        const tiles = row.invalid
+          ? Array.from({ length: 5 }, (_, i) => ({ letter: (row.guess || "")[i] || "", mark: "gray" }))
+          : row.tiles;
+        const cells = tiles.map((t) => `<div class="tile ${t.mark || "empty"}">${escapeHtml(t.letter || "")}</div>`).join("");
+        return `<div class="brow${idx === activeRow ? " active" : ""}">${cells}</div>`;
       }).join("");
-
-      els.words.innerHTML = (observation.candidate_words || [])
-        .map((word) => `<span class="word">${escapeHtml(word)}</span>`)
-        .join("");
     }
 
-    function renderDetails(turn, episode) {
-      if (!turn) {
-        els.action.textContent = "-";
-        els.reward.textContent = "-";
-        els.result.textContent = "-";
-        els.reasoning.textContent = "No replay turns found.";
-        return;
-      }
-
-      els.action.textContent = actionText(turn.action);
-      els.reward.textContent = turn.reward ?? "-";
-      const terminal = turn.terminated || turn.truncated;
-      const won = turn.info?.won === "1.0" || episode?.terminal_info?.won === "1.0";
-      els.result.textContent = terminal ? (won ? "Solved" : "Ended") : "Running";
-      els.reasoning.textContent = turn.reasoning || "Reasoning was not included in this export.";
+    function renderCaption(turn, idx, n, ti) {
+      if (!turn) { $("caption").innerHTML = `<span class="notice">This run has no step traces to replay.</span>`; return; }
+      const guess = turn.action?.guess || turn.action || "?";
+      const solvedHere = isWon(turn.info);
+      const terminal = turn.terminated || turn.truncated || idx === n - 1;
+      let tail;
+      if (solvedHere) tail = `<b>solved!</b> the word was <b class="ans">${escapeHtml(ti.answer || guess)}</b>`;
+      else if (terminal) tail = `episode ended — the word was <b class="ans">${escapeHtml(ti.answer || "?")}</b>`;
+      else tail = `reward ${fmtScore(turn.reward)} · ${boardOf(turn).guesses_remaining ?? "?"} guesses left`;
+      $("caption").innerHTML = `Guess ${idx + 1}: <b class="ans">${escapeHtml(String(guess).toUpperCase())}</b> — ${tail}`;
     }
 
-    function actionText(action) {
-      if (typeof action === "string") return action;
-      if (action?.guess) return action.guess;
-      if (action?.action?.guess) return action.action.guess;
-      return action ? JSON.stringify(action) : "-";
+    function renderOutcome(ep, ti) {
+      const card = $("answer-card");
+      const failed = ep?.status === "failed";
+      const won = isWon(ti);
+      card.className = "answer-card" + (failed ? " loss" : won ? " win" : ti.answer ? " loss" : "");
+      $("answer").textContent = ti.answer ? String(ti.answer).toUpperCase() : failed ? "FAILED" : "—";
+      const facts = [
+        ["Result", failed ? "failed" : won ? "solved ✓" : "lost ✗"],
+        ["Guesses", ti.guesses_used ?? ep?.steps ?? "—"],
+        ["Reward", ep?.total_reward ?? "—"],
+        ["Tokens", ti.total_tokens ? Number(ti.total_tokens).toLocaleString() : "—"],
+      ];
+      $("ep-facts").innerHTML = facts.map(([k, v]) => `<div><div class="k">${k}</div><div class="v">${escapeHtml(String(v))}</div></div>`).join("");
+      if (failed && ti.error) $("ep-facts").innerHTML += `<div style="grid-column:1/-1"><div class="k">Error</div><div class="v" style="color:var(--bad);font-weight:600;font-size:12px">${escapeHtml(String(ti.error).split("\n")[0].slice(0, 160))}</div></div>`;
     }
 
-    function shortId(id) {
-      return String(id || "").slice(0, 8);
-    }
-
-    function setMessage(text) {
-      els.message.textContent = text || "";
-    }
-
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    els.timeline.addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-step]");
-      if (!button) return;
-      state.turnIndex = Number(button.dataset.step);
+    /* ---------- step navigation ---------- */
+    function goto(i) {
+      const n = currentTurns().length;
+      state.stepIndex = Math.max(0, Math.min(i, n - 1));
       render();
+    }
+    function stopPlay() { state.playing = false; clearInterval(state.timer); state.timer = null; $("play").textContent = "▶ Play"; }
+    function play() {
+      if (state.playing) return stopPlay();
+      const n = currentTurns().length;
+      if (!n) return;
+      if (state.stepIndex >= n - 1) state.stepIndex = 0;
+      state.playing = true; $("play").textContent = "⏸ Pause"; render();
+      state.timer = setInterval(() => {
+        if (state.stepIndex >= currentTurns().length - 1) return stopPlay();
+        state.stepIndex += 1; render();
+      }, 1100);
+    }
+
+    /* ---------- events ---------- */
+    $("timeline").addEventListener("click", (e) => { const b = e.target.closest("button[data-step]"); if (b) { stopPlay(); goto(Number(b.dataset.step)); } });
+    $("episodes").addEventListener("click", (e) => { const b = e.target.closest("button[data-ep]"); if (b) { stopPlay(); selectEpisode(b.dataset.ep, true); } });
+    $("runs-list").addEventListener("click", async (e) => { const b = e.target.closest("button[data-run-id]"); if (b) { try { await loadRun(b.dataset.runId); } catch (err) { setMessage(err.message); } } });
+    $("prev").addEventListener("click", () => { stopPlay(); goto(state.stepIndex - 1); });
+    $("next").addEventListener("click", () => { stopPlay(); goto(state.stepIndex + 1); });
+    $("play").addEventListener("click", play);
+    $("load-run").addEventListener("click", async () => { try { await loadRun($("run-id").value.trim()); } catch (err) { setMessage(err.message); } });
+    $("refresh-runs").addEventListener("click", async () => { await loadIndex(); setMessage(state.index.length ? `Index has ${state.index.length} run(s).` : "Index empty."); });
+    $("fetch-recent").addEventListener("click", async () => { try { await fetchRecentRuns(); } catch (err) { setMessage(`Fetch failed: ${err.message}`); } });
+    $("file").addEventListener("change", async () => { const f = $("file").files?.[0]; if (!f) return; try { setReplay(JSON.parse(await f.text()), `Loaded ${f.name}.`); } catch (err) { setMessage(err.message); } });
+    document.addEventListener("keydown", (e) => {
+      if (["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
+      if (e.key === "ArrowRight") { stopPlay(); goto(state.stepIndex + 1); }
+      else if (e.key === "ArrowLeft") { stopPlay(); goto(state.stepIndex - 1); }
+      else if (e.key === " ") { e.preventDefault(); play(); }
     });
 
-    els.episodeSelect.addEventListener("change", () => {
-      state.episodeId = els.episodeSelect.value;
-      state.turnIndex = 0;
-      render();
-    });
-
-    els.loadRun.addEventListener("click", async () => {
-      try {
-        await loadRun(els.runId.value.trim());
-      } catch (error) {
-        setMessage(error.message);
-      }
-    });
-
-    els.runsList.addEventListener("click", async (event) => {
-      const button = event.target.closest("button[data-run-id]");
-      if (!button) return;
-      try {
-        await loadRun(button.dataset.runId);
-      } catch (error) {
-        setMessage(error.message);
-      }
-    });
-
-    els.refreshRuns.addEventListener("click", async () => {
-      setMessage("Refreshing run index...");
-      await loadIndex();
-      setMessage(state.index.length ? `Index has ${state.index.length} run(s).` : "Index is empty.");
-    });
-
-    els.fetchRecent.addEventListener("click", async () => {
-      try {
-        await fetchRecentRuns();
-      } catch (error) {
-        setMessage(`Fetch recent failed: ${error.message}`);
-      }
-    });
-
-    els.file.addEventListener("change", async () => {
-      const file = els.file.files?.[0];
-      if (!file) return;
-      try {
-        setReplay(JSON.parse(await file.text()), `Loaded ${file.name}.`);
-      } catch (error) {
-        setMessage(error.message);
-      }
-    });
-
-    loadInitial().catch((error) => {
-      setMessage(error.message);
-      els.runMeta.textContent = "No replay loaded";
-    });
+    loadInitial().catch((err) => { setMessage(err.message); $("run-sub").textContent = "No run loaded"; });
   </script>
 </body>
 </html>
